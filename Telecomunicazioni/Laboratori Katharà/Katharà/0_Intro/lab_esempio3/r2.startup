@@ -1,0 +1,4 @@
+ifconfig eth0 10.0.2.2/30
+ifconfig eth1 10.0.2.129/26
+ifconfig eth2 10.0.2.193/26
+route add -net 10.0.1.0/24 gw 10.0.2.1 dev eth0

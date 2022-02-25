@@ -1,0 +1,11 @@
+package client;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class Frame extends JFrame{
+
+	JFrame frame = new JFrame();
+	BorderLayout frameLayout = new BorderLayout();
+	
+}

@@ -1,0 +1,5 @@
+Consideriamo il caso in cui si hanno due processi in parallelo, P1 con identificativo 1 e P2 con identificativo 2.
+Se P1 sceglie di entrare in CS va in doorway e sceglie il numero. Supponiamo che dopo aver calcolato (ma non ancora scritto) il numero (es numero 2), P1 venga interrotto dal sistema operativo. 
+A questo punto P2 sceglie il numero e per forza di cose deve scegliere il numero 2, quindi lo scrive e va avanti.
+Se in questo momento il processo P1 viene rischedulato dal sistema operativo, anche lui scriverà il numero 2 e procederà.
+Entrambi vanno poi ad eseguire il secondo controllo della bakery e dato che entrambi hanno lo stesso numero, il confronto avviene sulla base dell'identificativo del processo, quindi P1 entra in CS prima di P2 perché ha identificativo più basso.

@@ -1,0 +1,13 @@
+package insegnante;
+
+public class Insegnante {
+	
+	//campi dati
+	private final String nome, cognome, annoVincitaConcorso;
+	private Scuola scuolaAppartenenza;
+	
+	//costruttore
+	public Insegnante(String nome, String cognome, String annoVincitaConcorso, Scuola scuolaAppartenenza) {
+		
+	}
+}

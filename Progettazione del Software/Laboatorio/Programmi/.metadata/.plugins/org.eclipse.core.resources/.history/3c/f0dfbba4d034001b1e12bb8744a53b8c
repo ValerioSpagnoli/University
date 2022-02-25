@@ -1,0 +1,38 @@
+package client;
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.*;
+import java.util.logging.*;
+
+public class FrameClient extends JFrame{
+	
+	JFrame frame = new JFrame();
+	
+	final BorderLayout borderLayout = new BorderLayout();
+	
+	//northPanel
+	final JPanel northPanel = new JPanel();
+	final FlowLayout northLayout = new FlowLayout();
+	final JLabel client = new JLabel("CLIENT");
+	
+	//centerPanel 
+	final JPanel centerPanel = new JPanel();
+	final GridLayout centerLayout = new GridLayout(2,2);
+	final JLabel server = new JLabel("Server");
+	final JLabel port = new JLabel("Port");
+	final JTextField serverText = new JTextField(12);
+	final JTextField portText = new JTextField(12);
+	
+	//southPanel 
+	final JPanel southPanel = new JPanel();
+	final FlowLayout southLayout = new FlowLayout();
+	final JButton connect = new JButton("Connect");
+	
+	public FrameClient() {
+		Container contentPane = frame.getContentPane();
+	}
+	
+	
+	
+}

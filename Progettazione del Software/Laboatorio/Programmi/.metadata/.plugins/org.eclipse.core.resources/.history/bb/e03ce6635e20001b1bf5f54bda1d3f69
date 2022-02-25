@@ -1,0 +1,52 @@
+package display;
+
+import java.awt.*;
+import javax.swing.*;
+
+
+public class Display extends JFrame{
+	
+	final BorderLayout borderLayout = new BorderLayout();
+	
+	//pannello centro
+	final JPanel centroPanel = new JPanel();
+	final GridLayout centroGridLayout = new GridLayout(4,8);
+	final JLabel matricolaText = new JLabel("Matricola");
+	final JTextArea matricola = new JTextArea(1, 10);
+	final JLabel IPaddressText = new JLabel("IP Address");
+	final JTextArea IPaddress = new JTextArea(1, 10);
+	final JLabel portaText = new JLabel("Porta");
+	final JTextArea porta = new JTextArea (1, 10);
+	
+	//pannello sud
+	final JPanel sudPanel = new JPanel();
+	final FlowLayout centroFlowLayout = new FlowLayout();
+	final JButton connect = new JButton("Connect");
+	final JButton disconnect = new JButton("Disconnect");
+	final JButton start = new JButton("Start");
+	final JButton stop = new JButton("Stop");
+	
+	final Listener ascoltatore = new Listener(this);
+	
+	public Display(){
+		super ("Connection App");
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.getContentPane().setLayout(borderLayout);
+		
+		//costruzione centroPanel
+		centroPanel.setLayout(centroGridLayout);
+		centroPanel.add(IPaddressText);
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

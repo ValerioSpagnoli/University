@@ -1,0 +1,15 @@
+package frame;
+
+import java.awt.*;
+import javax.swing.*;
+
+public class Frame extends JFrame{
+	
+	final BorderLayout borderLayout = new BorderLayout();
+	
+	//pannello nord
+	
+	//pannello sud
+	
+	//pannello centro
+}

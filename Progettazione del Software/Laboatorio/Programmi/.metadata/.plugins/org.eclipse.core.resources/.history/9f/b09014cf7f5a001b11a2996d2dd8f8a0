@@ -1,0 +1,39 @@
+package client;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JTextField;
+
+public class ClientListener implements ActionListener{
+	
+	private static final String CONNECT = "connect";
+	private static final String DISCONNECT = "disconnect";
+	private static final String START = "start";
+	private static final String STOP = "stop";
+	private static final String RIVELA = "rivela";
+	
+	private Frame frame;
+	private JTextField ipAddress;
+	private JTextField port;
+	
+	private Downloader downloader;
+	
+	private Socket socket;
+	private Output
+	
+	public ClientListener() {
+		
+	}
+	
+	public void setupConnection() {
+		
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

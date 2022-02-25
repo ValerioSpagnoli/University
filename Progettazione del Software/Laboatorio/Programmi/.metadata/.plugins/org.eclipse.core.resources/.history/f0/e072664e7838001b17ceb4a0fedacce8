@@ -1,0 +1,105 @@
+package clientApp;
+import client.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.net.UnknownHostException;
+import java.util.Scanner;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
+
+
+
+public class ClientListener implements ActionListener{
+	
+	public static final String START = "Start";
+	public static final String STOP = "Stop";
+	public static final String CONNECT = "Connect";
+	public static final String DISCONNECT = "Disconnect";
+	
+	private JTextField ipAddressField;
+	private JTextField portaField;
+	private JTextField matricolaField;
+	
+	private boolean connect = false;
+	private boolean transmitting = false;
+	
+	private Downloader downloader = null;
+	
+	private PrintWriter netPw;
+	private Scanner scan;
+	private Socket sock;
+	private Display display;
+	private boolean connected;
+	
+	
+	public ClientListener(Display display) {
+		this.display = display;	
+	}
+	
+	private void setupConnection() {
+		
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		String cmd = e.getActionCommand();
+		if(cmd.equals(ClientListener.CONNECT)) {
+			IPaddress = display.IPaddress.getText();
+			port = Integer.parseInt(display.porta.getText());
+			matricola = display.matricola.getText();
+			setupConnection();
+			connected = true;
+			JOptionPane.showMessageDialog(null, "Connessione stabilita");
+			client = new Client(IPaddress, port);
+		}
+		else if(cmd.equals(ClientListener.START)){
+			transmitting = true;
+			stato = true;
+			logger.log(Level.INFO, "Start");
+			JOptionPane.showMessageDialog(null, "Download avviato");
+			client.send("start");
+			
+			
+			try {
+				FileWriter file = new FileWriter(matricola+".txt");
+				ClientRun cr = ClientRun(file, client.getSocket());
+				Thread t = new Thread();
+				
+			} catch (IOException ioe) {
+				logger.log(Level.SEVERE, "Problemi di scrittura su file. " + ioe.getMessage(), ioe.getStackTrace());
+			}
+		}
+		else if(cmd.equals(ClientListener.STOP)){
+			transmitting = false;
+			logger.log(Level.INFO, "Stop");
+			JOptionPane.showMessageDialog(null, "Download interrotto");
+			client.send("stop");
+		}
+		else if(cmd.equals(ClientListener.DISCONNECT)){
+			connected = false;
+			//logger.log(Level.INFO, "Disconnected");
+			System.out.println("Disconnect");
+			JOptionPane.showMessageDialog(null, "Connessione interrotta");
+		}
+		display.setButtons(connected, transmitting);
+	}
+	
+	
+	
+}
+
+
+
+
+
+
+
+
+
+

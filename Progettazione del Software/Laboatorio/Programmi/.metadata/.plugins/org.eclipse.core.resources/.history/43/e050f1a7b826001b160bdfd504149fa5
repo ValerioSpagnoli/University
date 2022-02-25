@@ -1,0 +1,118 @@
+package lista;
+
+
+import java.util.*;
+
+public class MiaLista<E> implements List<E>, Cloneable {
+	private Object[] element;
+	int size;
+	
+	public MiaLista() {
+		element = new Object[13];
+		size = 0;	
+	}
+	
+	public int size() {
+		return size;
+	}
+	
+	public boolean isEmpty() {
+		return size == 0;
+	}
+	
+	public boolean contains(Object o) {
+		for(int i = 0; i<size; i++) {
+			if(element[i].equals(o)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean add(E e) {
+		//rialloca l'array con dimensione doppia
+		if(size >= element.length) {
+			element = Arrays.copyOf(element, element.length * 2);
+		}
+		element[size] = e;
+		size++;
+		return true;
+	}
+	
+	public boolean checkBounds(int index) {
+		return index >=0 && index<size;
+	}
+	
+	public void add(int index, E e) {
+		if(!checkBounds(index)) {
+			throw new IndexOutOfBoundsException();
+		}
+		//rialloca l'array di dimensione doppia
+		if(size>=element.length) {
+			element = Arrays.copyOf(element, element.length * 2);
+		}
+		for(int i = index; i<size-1; i++) {
+			element[i+1] = element[i];
+		}
+		element[index] = e;
+		size++;
+
+	}
+	
+	public boolean remove(Object o) {
+		if(!contains(o)) return false;
+		remove(indexOf(o));
+		return true;
+	}
+	
+	public E remove(int index) {
+		if(!checkBounds(index)) {
+			throw new IndexOutOfBoundsException();
+		}
+		E old = (E) element[index];
+		
+		//traslo gli elementi dell'array a sinistra per colmare lo spazio
+		for(int i = index; i<size-1; i++) {
+			element[i] = element[i+1];
+		}
+		size--;
+		
+		//rialloca l'array con dimensione pari alla metà della dimensione attuale
+		if(element.length>13 && size>element.length / 2) {
+			element = Arrays.copyOf(element, element.length / 2);
+		}
+		return old;
+	}
+	
+	
+	
+	public void clear() {
+		element = new Object[13];
+		size = 0;
+	}
+	
+	public E get(int index) {
+		
+	}
+	
+	public E set(int index, E e) {
+		if(!checkBounds(index)) {
+			throw new IndexOutOfBoundsException();
+		}
+		E old = (E) element[index];
+		element[index] = e;
+		return old;
+		
+	}
+	
+	public int indexOf(Object o) {
+		for(int i = 0; i<size; i++) {
+			if(element[i].equals(o)) {
+				return i;
+			}
+		}
+		return -1;
+	}
+
+	
+}

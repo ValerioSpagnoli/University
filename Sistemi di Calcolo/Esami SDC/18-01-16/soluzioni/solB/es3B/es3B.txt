@@ -1,0 +1,6 @@
+1. Descrivere le ottimizzazioni applicate manualmente e dire perché si ritiene che siano efficaci.
+
+2. Riportare la media dei tempi di esecuzione (real) di tre run di es3B e di es3B-opt. I tempi possono essere ottenuti usando il comando time.
+
+3. Riportare lo speedup di es3B-opt rispetto es3B
+

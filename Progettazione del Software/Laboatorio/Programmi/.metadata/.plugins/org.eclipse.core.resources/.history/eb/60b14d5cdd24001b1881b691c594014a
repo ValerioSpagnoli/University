@@ -1,0 +1,37 @@
+package lista;
+
+public class MiaLista<E> implements List<E> {
+	private NodoLista<E> inizio;
+	private int size;
+	
+	public MiaLista() {
+		inizio = null;
+		size = 0;
+	}
+	
+	public int size() {
+		return size;
+	}
+	
+	public boolean isEmpty() {
+		return inizio == null;
+	}
+	
+	public void clear() {
+		inizio = null;
+		size = 0;
+	}
+	
+	public boolean add(int index, E element) {
+		NodoLista<E> nuovo = new NodoLista<E>(null, element);
+		if(inizio == null) {
+			inizio = nuovo;
+		}
+		else {
+			for(int i = 0; i<index; i++) {
+				
+			}
+		}
+	}
+
+}

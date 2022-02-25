@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="content-type">
+  <title>Esame di Tecniche di Programmazione del 23/01/2017</title>
+  <style>
+    img {
+    margin: 15px;
+    }
+    
+    .maxwidth {
+    font-family: Verdana, Geneva, sans-serif;
+    max-width: 1000px;
+    margin: auto;
+    position: absolute;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%);
+    }
+    
+    hr {
+    border: 1px solid;
+    color: gray;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="maxwidth">
+    
+    <h1>Esame di Tecniche di Programmazione del 23/01/2017</h1>
+    <hr>
+
+    <h3>Istruzioni per lo svolgimento della prova:</h3>
+    <ul>
+      <li>Scaricare il compito digitando in un terminale il comando
+	<strong><code>TDP_download_compito.bash</code></strong>.</li>
+      <li>Inserire i propri dati personali (<strong>matricola, nome e
+	  cognome</strong>) nella GUI, quindi salvare e chiudere la
+	GUI.</li>
+      <li>All'esercizio i &egrave; associata la
+	directory <code>esercizio{i}</code>, contenente i file necessari
+	allo svolgimento dell'esercizio. Ciascun esercizio deve essere
+	svolto modificando esclusivamente il file <code>esercizio{i}.h
+	</code> (se necessario) ed <code>esercizio{i}.c</code> presenti
+	nella directory corrispondente. Nessun file per qualsiasi motivo
+	deve essere spostato dalla directory in cui si trova. Nessun altro
+	file deve essere modificato. Non devono essere creati ulteriori
+	file.</li>
+      <li>Il file contenente il programma principale di ciascun esercizio
+	&egrave; <code> test_esercizio{i}.c</code>. Tale file deve essere
+	compilato usando il <code> Makefile</code> fornito nella directory,
+	ed il corrispondente eseguibile (<code> test_esercizio{i}</code>)
+	lanciato per eseguire i test di correttezza e conoscerne l'esito. Il
+	file <code>test_esercizio{i}.c</code> non deve essere modificato per
+	alcun motivo.</li>
+      <li>Alla fine del tempo concesso per svolgere l' esame o, se lo
+	avete terminato prima dello scadere del tempo, dovete eseguire
+	lo <strong>script di consegna dell' esame</strong>. <strong>La
+	  consegna pu&ograve; essere effettuata una ed una volta sola</strong>, per
+	cui consegnate solo quando siete sicuri di volerlo fare. Per
+	consegnare il compito dovete digitare sul terminale il
+	comando <strong><code>TDP_upload_compito.bash</code></strong>. Una volta
+	avviato lo script di consegna controllate che sia andato tutto a
+	buon fine <strong>verificando</strong> che sul terminale venga
+	stampato un output simile al seguente:<br>
+      <code>local:
+  	  matricola_cognome_nome_hostname.tar.gz remote: 
+	  uploads/matricola_cognome_nome_hostname.tar.gz<br>
+	  &nbsp;&nbsp;200 PORT command successful. Consider using PASV.<br>
+	  &nbsp;&nbsp;150 Ok to send data.<br>
+	  &nbsp;&nbsp;226 Transfer complete. 4886 bytes sent in 0.00 secs (113606.8 kB/s)<br>
+	  &nbsp;&nbsp;221 Goodbye.</code></li>
+      <li>Verranno corretti esclusivamente gli esercizi la cui
+  	compilazione dia esito positivo. In caso contrario
+  	verr&agrave; assegnato un punteggio nullo. Se non verr&agrave;
+  	eseguito lo script di consegna dell' esame esso non
+  	verr&agrave; corretto (&egrave; equivalente a non aver
+  	consegnato il compito a fine esame).</li>
+      <li>Per eventuali problemi o dubbi, chiedere al docente.</li>
+    </ul>
+    <hr>
+
+    <p><br></p>
+
+    <h2>Esercizio 1</h2>
+    <p>Sia data la seguente struttura <code>Mat:</code></p>
+<p><code>
+typedef struct Mat {<br>
+&nbsp;&nbsp;int cols; // numero di colonne<br>
+&nbsp;&nbsp;int rows; // numero di righe<br>
+&nbsp;&nbsp;int** row_ptrs; // puntatori alle righe<br>
+} Mat;
+</code></p>
+<p>Implementare la seguente funzione C:</p>
+
+<p><code>Mat* matrixRepeat(Mat* src, int num_row_blocks, int num_col_blocks);</code></p>
+<p>che dati in input:
+<ul>
+  <li>puntatore ad una matrice <code>src</code></li>
+  <li>un intero che specifica il numero di blocchi di riga <code>num_row_blocks</code></li>
+  <li>un intero che specifica il numero di blocchi di colonna <code>num_col_blocks</code></li>
+</ul>
+restituisca una nuova matrice di dimensioni opportune che contiene
+la matrice <code>src</code>, ripetuta per <code>num_row_blocks</code> sulle righe e
+<code>num_col_blocks</code> per le colonne.
+
+<h3>Esempio</h3>
+    <p>Data una struttura <code>Mat src</code> contenente la seguente immagine <code>2x3</code>:</p>
+    <p><code>
+	1 2 3<br>
+	1 3 1<br>
+    </code></p>
+
+    <p>Richiamando la seguente linea di codice:</p>
+    <p><code>Mat* dest=matrixRepeat(src, 2, 3);</code></p>
+    <p>si ottiene il seguente effetto su <code>dest</code>:</p>
+    <p><code>
+	1 2 3 1 2 3 1 2 3<br>
+	1 3 1 1 3 1 1 3 1<br>
+	1 2 3 1 2 3 1 2 3<br>
+	1 3 1 1 3 1 1 3 1<br>
+    </code></p>
+    <hr>
+    <p><br></p>
+
+    <h2>Esercizio 2</h2>
+    <p>Con riferimento alla struttura SCL descritta di seguito<br>
+      <br>
+      <code>struct NodoSCL {<br>
+        &nbsp; int value;<br>
+        &nbsp; int count;<br>
+        &nbsp; struct NodoSCL* next;<br>
+        };</code></p>
+    <p>Si realizzi la seguente funzione C</p>
+    <ul>
+      <li><code>NodoSCL* computeFrequencies(int* v, int v_dim);</code></li>
+    </ul>
+    <p>che, dati un array di interi <code>v</code>, e la sua dimensione <code>v_dim</code>,      
+      restituisca una lista contenente un numero di elementi pari al numero di valori diversi
+in <code>v</code>. Ogni elemento della lista contiene: un valore distinto di <code>v</code> nel campo <code>value</code>, e il numero di occorrenze di tale valore nel campo <code>count</code>.</p>
+    <h3>Esempio</h3>
+    <p>Sia <code>v</code> il seguente vettore</p>
+    <p><code>1 2 100 1 2 9 9 9</code><br>
+      Invocando<br>
+      <br>
+      <code>NodoSCL* l=computeFrequencies(v, 8)</code>;<br>
+      <br>
+      produce in <code>l</code> una lista composta come segue:
+    <p><code>
+	{value=1, count=2} -&gt; {value=2, count=2} -&gt; {value=100,
+count=1} -&gt; {value=9, count=3}<br>
+    </code></p>
+    <hr>
+    
+    <p><br></p>
+
+    <h2>Esercizio 3</h2>
+    <p>Sia data una lista i cui elementi appartengono alla seguente
+struttura:</p>
+    <p><code>
+	struct NodoSCL {<br>
+	&nbsp;&nbsp;int info;<br>
+	&nbsp;&nbsp;struct NodoSCL* next;<br>
+	};
+    </code></p>
+    <p>si realizzi la funzione <strong>ricorsiva</strong> C:</p>
+
+    <p><code>NodoSCL* squaredValues(NodoSCL* l1, NodoSCL* l2)</code></p>
+    <p>che dato in input due liste <code>l1</code> ed <code>l2</code>, aventi la stessa lunghezza, restituisca una nuova lista. Tale lista deve avere la lunghezza di <code>l1</code> ed <code>l2</code>. L'elemento in posizione <code>i</code> della lista restituita deve avere valore pari a l1[i]*l2[i].</p>
+    <p>Si supponga di avere in input sempre liste di egual lunghezza <code>v</code>:</p>
+    <h3>Esempio</h3>
+    <p>Sia <code>l1</code> la seguente sequenza:</p>
+    <p><code>
+    1 1 2 4 5 3 9
+    </code></p>
+    <p>Sia <code>l2</code> la seguente sequenza:</p>
+    <p><code>
+    7 2 3 9 1 1 2
+    </code></p>
+
+    <p>Richiamando la seguente istruzione:</p>
+    <p><code>NodoSCL* l_d = squaredValue(l1, l2);</code></p>
+    <p><code>l_d</code> dovr&agrave; contenere:</p>
+    <p><code>
+    7 2 6 36 5 3 18
+    </code></p>
+    <p>Se le liste sono vuote, la funzione ritorna <code>NULL</code>.</p>
+
+    <hr>
+
+    <p><br></p>
+
+  </div>
+</body>
+</html>

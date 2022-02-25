@@ -1,0 +1,100 @@
+package clientApp;
+import client.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import javax.swing.*;
+import java.util.logging.*;
+
+
+public class Listener implements ActionListener{
+	
+	public static final String START = "Start";
+	public static final String STOP = "Stop";
+	public static final String CONNECT = "Connect";
+	public static final String DISCONNECT = "Disconnect";
+	
+	private String IPaddress;
+	private int port;
+	private String matricola;
+	private boolean stato = false;
+	
+	private Client client;
+	
+	private boolean connect = false;
+	private boolean transmitting = false;
+	
+	private Display display;
+	private boolean connected;
+	
+	private static Logger logger = Logger.getLogger("clientApp.Listener");
+	
+	public Listener(Display display) {
+		this.display = display;	
+	}
+	
+	private void setupConnection() {
+		logger.log(Level.INFO, "connect " + IPaddress + ":" + port);
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		String cmd = e.getActionCommand();
+		if(cmd.equals(Listener.CONNECT)) {
+			IPaddress = display.IPaddress.getText();
+			port = Integer.parseInt(display.porta.getText());
+			matricola = display.matricola.getText();
+			setupConnection();
+			connected = true;
+			JOptionPane.showMessageDialog(null, "Connessione stabilita");
+			client = new Client(IPaddress, port);
+		}
+		else if(cmd.equals(Listener.START)){
+			transmitting = true;
+			stato = true;
+			logger.log(Level.INFO, "Start");
+			JOptionPane.showMessageDialog(null, "Download avviato");
+			client.send("start");
+			try {
+				scrivi(stato);
+			} catch (IOException ioe) {
+				logger.log(Level.SEVERE, "Problemi di scrittura su file. " + ioe.getMessage(), ioe.getStackTrace());
+			}
+		}
+		else if(cmd.equals(Listener.STOP)){
+			transmitting = false;
+			stato = false;
+			scrivi(stato);
+			logger.log(Level.INFO, "Stop");
+			JOptionPane.showMessageDialog(null, "Download interrotto");
+			client.send("stop");
+			
+		}
+		else if(cmd.equals(Listener.DISCONNECT)){
+			connected = false;
+			//logger.log(Level.INFO, "Disconnected");
+			System.out.println("Disconnect");
+			JOptionPane.showMessageDialog(null, "Connessione interrotta");
+		}
+		display.setButtons(connected, transmitting);
+	}
+	
+	public void scrivi(boolean stato) throws IOException {
+		FileWriter file = new FileWriter(matricola+".txt");
+		client.recevi(file, stato);
+		file.flush();
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+

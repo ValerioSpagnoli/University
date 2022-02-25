@@ -1,0 +1,17 @@
+package client;
+
+import java.util.*;
+
+public class Client implements Runnable{
+	
+	private Scanner scan;
+	private boolean running;
+	private String code;
+
+
+	public void run() {
+		
+		
+	}
+
+}

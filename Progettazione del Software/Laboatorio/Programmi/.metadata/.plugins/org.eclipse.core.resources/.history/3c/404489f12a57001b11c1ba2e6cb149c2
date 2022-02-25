@@ -1,0 +1,54 @@
+package client;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
+
+import clientApp.ClientListener;
+
+public class Downloader implements Runnable{
+	
+	private PrintWriter printWriter;
+	private Scanner scanner;
+	private boolean running;
+	private String stringaRicevuta;
+
+	public Downloader(String fileName, Scanner scanner) throws IOException {
+		stringaRicevuta = "";
+		File file = new File(fileName+".txt");
+		printWriter = new PrintWriter(new FileWriter(file));
+		this.scanner = scanner;
+		running = false;
+	}
+	
+	
+	public void run() {
+		if(!running) {
+			running = true;
+			while(running) {
+				
+				String stringa = scanner.nextLine();
+				
+				if(stringa.equals("*")) {
+					
+					printWriter.println(stringaRicevuta);
+					printWriter.flush();
+					
+					String codiceChiusura = scanner.nextLine();
+					printWriter.println(codiceChiusura);
+					printWriter.flush();
+					printWriter.close();
+					
+					String comandoStop = scanner.nextLine();
+					running = !comandoStop.equals(ClientListener.STOP);
+					
+				}
+				else {
+					stringaRicevuta = stringaRicevuta + stringa;
+				}
+			}
+		}
+	}
+}

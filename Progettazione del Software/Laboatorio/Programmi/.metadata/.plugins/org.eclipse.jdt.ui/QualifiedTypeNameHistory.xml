@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="java.lang.reflect.Array"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="esercizio_1.Esercizio_1"/>
+    <fullyQualifiedTypeName name="esercizio_2.Esercizio_2"/>
+    <fullyQualifiedTypeName name="persona.Persona"/>
+    <fullyQualifiedTypeName name="scuola.Scuola"/>
+    <fullyQualifiedTypeName name="insegnante.Insegnante"/>
+    <fullyQualifiedTypeName name="classe.Classe"/>
+    <fullyQualifiedTypeName name="java.awt.FlowLayout"/>
+    <fullyQualifiedTypeName name="java.awt.BorderLayout"/>
+    <fullyQualifiedTypeName name="frame.Frame"/>
+    <fullyQualifiedTypeName name="java.util.NoSuchElementException"/>
+    <fullyQualifiedTypeName name="com.sun.tools.javac.util.List"/>
+    <fullyQualifiedTypeName name="java.awt.List"/>
+    <fullyQualifiedTypeName name="java.io.OutputStream"/>
+    <fullyQualifiedTypeName name="java.io.OutputStreamWriter"/>
+    <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+    <fullyQualifiedTypeName name="java.awt.Color"/>
+</qualifiedTypeNameHistroy>

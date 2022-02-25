@@ -1,0 +1,61 @@
+/*
+ *  Dijkstra ha generalizzato l'algoritmo di Dekker a N entità, dove N è definito staticamente.
+ *  Questo algoritmo garantise mutua esclusione, no deadlock e no livelock, ma potrebbe portare 
+ * 	a stravation
+ * 
+ */
+
+//    Si usano le seguenti variabili GLOBALI:  
+
+///   boolean interested[N] = {false, ..., false};
+//    Per indicare se il processo n-esimo è interessato ad entrare in CS  
+
+///   boolean passed[N] = {false, ..., false};
+//    Per verificare se altri processi hanno superato il primo controllo
+
+///   int k;
+//    Per indicare di quale processo è il turno. k € {0, ..., N}  
+
+//    Si usa la seguente variabile LOCALE:
+
+///   int i;
+//    Identifica il processo su cui viene applicato l'algoritmo
+
+//global
+boolean interested[N] = {false, ..., false};
+boolean passed[N] = {false, ..., false};
+int k;
+
+//local
+int i;
+
+while(true){
+	
+	interested[i] = true;					// Il processo i è interessato ad entrare in CS
+	
+	// INIZIO PRIMO CONTROLLO
+	while(k != i) {							// Finchè non è il turno del processo i
+		passed[i] = false;					// Il processo i non è più interessato ad entrare in CS
+		if(!interested[k]) then k = i;      // Se il processo di cui è attualmente il turno non è 
+											// più interessato ad entrare in CS, il processo i 
+											// imposta il turno pari a se stesso
+	}
+	// FINE PRIMO CONTROLLO
+										
+	passed[i] = true;						// Il processo i comunica che ha passato il primo 
+											// controllo	
+	
+	// INIZIO SECONDO CONTROLLO
+	for(int j = 1; j <= N && j != i; j++){	// Per ogni processo eccetto i
+		if(passed[j] == true) then goto 37;  // Se un altro processo ha passato il primo controllo, 
+											// torna al while del primo controllo
+	}
+	// FINE SECONDO CONTROLLO
+	
+	/* CRITICAL SECTION */					// Il processo i entra in CS
+											// Quando il processo i esce dalla CS
+	passed[i] = false;						// imposta passed a false
+	interested[i] = false;					// imposta interested a false
+	
+}
+

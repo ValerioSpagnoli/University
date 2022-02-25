@@ -1,0 +1,69 @@
+package lista;
+
+
+import java.util.*;
+
+public class MiaLista<E> implements List<E>, Cloneable {
+	private Object[] element;
+	int size;
+	
+	public MiaLista() {
+		element = new Object[13];
+		size = 0;	
+	}
+	
+	public int size() {
+		return size;
+	}
+	
+	public boolean isEmpty() {
+		return size == 0;
+	}
+	
+	public boolean contains(Object o) {
+		for(int i = 0; i<size; i++) {
+			if(element[i].equals(o)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean add(E e) {
+		//rialloca l'array con dimensione doppia
+		if(size >= element.length) {
+			element = Arrays.copyOf(element, element.length * 2);
+		}
+		element[size] = e;
+		size++;
+		return true;
+	}
+	
+	public add(int index, E e) {
+		if(!checkBound(index)) {
+			
+		}
+	}
+	
+	boolean remove(int index) {
+		
+	}
+	
+	void clear() {
+		
+	}
+	
+	E get(int index) {
+		
+	}
+	
+	E set(int index, E element) {
+		
+	}
+	
+	int indexOf(Object o) {
+		
+	}
+
+	
+}

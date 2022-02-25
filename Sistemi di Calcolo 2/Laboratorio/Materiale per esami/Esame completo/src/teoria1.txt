@@ -1,0 +1,40 @@
+La compare_and_swap è una funzione che sfrutta i registri per fornire mutua esclusione a livello hardware.
+
+int compare_and_swap (int* reg, int oldval, int newval){
+	int old_reg_val = *reg;	
+	if(*old_reg_val == oldval) *reg = newval;
+	return old_reg_val;
+}
+
+Funziona nel seguente modo:
+Se il valore nel registro è uguale al valore oldval, la funzione sostituisce il valore nel registro con il valore newval e restituisce oldval.
+
+Può essere usata per implementare mutua esclusione nel seguente modo:
+Si definisce una variabile globale int bolt;
+Si inizializza bolt = 0;
+Si verifica all'interno di un while la condizione compare_and_swap(&bolt, 0, 1);
+Se la compare and swap restituisce 0 il processo va in CS, altrimenti rimane in busy waiting sul while.
+Il processo che esce dalla CS imposta il valore di bolt nuovamente a 0.
+Dato che inizialmente bolt = 0, il primo processo che verifica la condizione riesce a passare perché la compare_and_swap sostituisce il valore di bolt con 1, ma restituisce il vecchio valore, quindi 0.
+Tutti gli altri processi, finché quello che sta in CS non esce e imposta bolt = 0, rimangono bloccati su while in busy waiting perché la compare_and_swap non cambia il valore di bolt, e restituisce 1.
+
+
+
+L'istruzione exchange è anche essa una funzione che sfrutta i registri e una posizione in memoria per fornire mutua esclusione a livello hardware.
+
+void exchange(int* register, int* memory){
+	int temp = *memory;
+	*memory = *register;
+	*register = temp;
+} 
+
+Scambia I valori di register e memory. Può essere usata per implementare mutua esclusione a livello software nel seguente modo:
+Si definisce una variabile globale  int bolt e si inizializza bolt = 0;
+Nella funzione che contiene la CS si definisce una variabile int keyi = 1;
+Si implementa un do{ exchange(&keyi, &bolt) } while(keyi != 0);
+Il primo processo passa e va in CS perché la funzione scambia i valori di bolt e keyi e quindi la condizione del while è falsa. A questo punto il prossimo processo inizializza nuovamente keyi = 1, quindi sia bolt che keyi valgono 1, quindi rimane bloccato sul do..while in quanto lo scambio non porta nessun cambiamento. 
+Quando il primo processo esce dalla CS rimette bolt a 0 e sblocca il processo successivo.
+
+
+
+

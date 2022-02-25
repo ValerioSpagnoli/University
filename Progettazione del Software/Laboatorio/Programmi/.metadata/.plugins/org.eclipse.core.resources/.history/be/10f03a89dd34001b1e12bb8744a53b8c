@@ -1,0 +1,25 @@
+package client;
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.util.logging.*;
+
+public class ListenerClient implements ActionListener{
+	
+	private FrameClient fc;
+	
+	public final static String CONNECT = "connect";
+	
+	public ListenerClient(FrameClient frame) {
+		fc = frame;
+	}
+
+	public void actionPerformed(ActionEvent arg0) {
+		
+	}
+	
+	
+	
+	
+}

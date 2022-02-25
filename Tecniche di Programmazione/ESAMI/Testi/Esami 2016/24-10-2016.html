@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="content-type">
+  <title>Esame di Tecniche di Programmazione del 24/10/2016</title>
+  <style>
+    img {
+    margin: 15px;
+    }
+    
+    .maxwidth {
+    font-family: Verdana, Geneva, sans-serif;
+    max-width: 1000px;
+    margin: auto;
+    position: absolute;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%);
+    }
+    
+    hr {
+    border: 1px solid;
+    color: gray;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="maxwidth">
+    
+    <h1>Esame di Tecniche di Programmazione del 24/10/2016</h1>
+    <hr>
+
+    <h3>Istruzioni per lo svolgimento della prova:</h3>
+    <ul>
+      <li>Scaricare il compito digitando in un terminale il comando
+	<strong><code>TDP_download_compito.bash</code></strong>.</li>
+      <li>Inserire i propri dati personali (<strong>matricola, nome e
+	  cognome</strong>) nella GUI, quindi salvare e chiudere la
+	GUI.</li>
+      <li>All'esercizio i &egrave; associata la
+	directory <code>esercizio{i}</code>, contenente i file necessari
+	allo svolgimento dell'esercizio. Ciascun esercizio deve essere
+	svolto modificando esclusivamente il file <code>esercizio{i}.h
+	</code> (se necessario) ed <code>esercizio{i}.c</code> presenti
+	nella directory corrispondente. Nessun file per qualsiasi motivo
+	deve essere spostato dalla directory in cui si trova. Nessun altro
+	file deve essere modificato. Non devono essere creati ulteriori
+	file.</li>
+      <li>Il file contenente il programma principale di ciascun esercizio
+	&egrave; <code> test_esercizio{i}.c</code>. Tale file deve essere
+	compilato usando il <code> Makefile</code> fornito nella directory,
+	ed il corrispondente eseguibile (<code> test_esercizio{i}</code>)
+	lanciato per eseguire i test di correttezza e conoscerne l'esito. Il
+	file <code>test_esercizio{i}.c</code> non deve essere modificato per
+	alcun motivo.</li>
+      <li>Alla fine del tempo concesso per svolgere l' esame o, se lo
+	avete terminato prima dello scadere del tempo, dovete eseguire
+	lo <strong>script di consegna dell' esame</strong>. <strong>La
+	  consegna pu&ograve; essere effettuata una ed una volta sola</strong>, per
+	cui consegnate solo quando siete sicuri di volerlo fare. Per
+	consegnare il compito dovete digitare sul terminale il
+	comando <strong><code>TDP_upload_compito.bash</code></strong>. Una volta
+	avviato lo script di consegna controllate che sia andato tutto a
+	buon fine <strong>verificando</strong> che sul terminale venga
+	stampato un output simile al seguente:<br>
+      <code>local:
+  	  matricola_cognome_nome_hostname.tar.gz remote: 
+	  uploads/matricola_cognome_nome_hostname.tar.gz<br>
+	  &nbsp;&nbsp;200 PORT command successful. Consider using PASV.<br>
+	  &nbsp;&nbsp;150 Ok to send data.<br>
+	  &nbsp;&nbsp;226 Transfer complete. 4886 bytes sent in 0.00 secs (113606.8 kB/s)<br>
+	  &nbsp;&nbsp;221 Goodbye.</code></li>
+      <li>Verranno corretti esclusivamente gli esercizi la cui
+  	compilazione dia esito positivo. In caso contrario
+  	verr&agrave; assegnato un punteggio nullo. Se non verr&agrave;
+  	eseguito lo script di consegna dell' esame esso non
+  	verr&agrave; corretto (&egrave; equivalente a non aver
+  	consegnato il compito a fine esame).</li>
+      <li>Per eventuali problemi o dubbi, chiedere al docente.</li>
+    </ul>
+    <hr>
+
+    <p><br></p>
+
+    <h2>Esercizio 1</h2>
+    <p>Sia data la seguente struttura <code>Mat:</code></p>
+<p><code>
+typedef struct Mat {<br>
+&nbsp;&nbsp;int cols; // numero di colonne<br>
+&nbsp;&nbsp;int rows; // numero di righe<br>
+&nbsp;&nbsp;int** row_ptrs; // puntatori alle righe<br>
+} Mat;
+</code></p>
+<p>Implementare la seguente funzione C:</p>
+<p><code>void mat_rotate_90_clockwise(Mat* dest, Mat* src);</code></p>
+<p>che dati in input:
+<ul>
+  <li>un puntatore ad una matrice preallocata <code>dest</code></li>
+  <li>un puntatore ad una matrice preallocata <code>src</code></li>
+</ul>
+copi in <code>dest</code> la matrice <code>src</code> rotata di 90 gradi in senso orario.
+
+<h3>Esempio</h3>
+    <p>Data una struttura <code>Mat src</code> contenente la seguente matrice <code>4x8</code>:</p>
+    <p><code>
+	1 2 3 1 3 3 2 1<br>
+	2 3 1 3 3 2 1 0<br>
+	1 3 3 2 1 2 1 1<br>
+	1 2 3 1 3 3 2 1<br>
+    </code></p>
+    <p>Richiamando la seguente linea di codice:</p>
+    <p><code>mat_rotate_90_clockwise(dest, src);</code></p>
+    <p>si ottiene il seguente effetto su <code>dest</code>:</p>
+    <p><code>
+	1 1 2 1<br>
+	2 3 3 2<br>
+	3 3 1 3<br>
+	1 2 3 1<br>
+	3 1 3 3<br>
+	3 2 2 3<br>
+	2 1 1 2<br>
+	1 1 0 1
+    </code></p>
+
+    <p><br></p>
+
+    <h2>Esercizio 2</h2>
+    <p>Sia data una lista i cui elementi appartengono alla seguente struttura <code>NodoSCL</code>:<br>
+      <br>
+      <code>struct ListNode {<br>
+        &nbsp; int value;<br>
+        &nbsp; struct NodoSCL* next;<br>
+        };</code></p>
+    <p>Si realizzi la funzione</p>
+    <ul>
+      <li><code>ListNode* fetch_elements(ListNode* element_positions, int* v, int v_size);</code></li>
+    </ul>
+    <p>che dati in input:
+      <ul>
+	<li>una lista di interi <code>element_positions</code></li>
+	<li>un puntatore ad un array di interi <code>v</code></li>
+	<li>un intero <code>v_size</code> rappresentante la lunghezza dell'array <code>v</code></li>
+      </ul>
+      restituisca una nuova lista della stessa dimensione della
+      lista <code>element_positions</code>. L'elemento in
+      posizione <code>i</code> di tale lista deve avere
+      valore <code>v[src[i]->value]</code>, dove la
+      notazione <code>src[i]->value</code> indica il valore
+      dell'elemento in posizione <code>i</code> della lista di input
+      passata come parametro.
+
+    <h3>Esempio</h3>
+    <p>Dato il seguente vettore di input <code>v</code>
+    <p><code>2 -3 2 -1 4 3</code><br><br>
+    e data la seguente lista di posizioni <code>element_positions</code> 
+    <p><code>1 -&gt; 5 -&gt; 0 -&gt; 3 -&gt; 0 -&gt; 3</code><br><br>
+      l' esecuzione della seguente istruzione<br><br>
+    <code>ListNode* l = fetch_elements(element_positions, v, 6);</code><br><br>
+    genera e restituisce la seguente lista <code>l</code>:<br><br>
+      <code>-3 -&gt; 3 -&gt; 2 -&gt; -1 -&gt; 2 -&gt; -1</code><br></p>
+    <hr>
+    
+    <p><br></p>
+
+    <h2>Esercizio 3</h2>
+    <p>Con riferimento alla struttura collegata lineare descritta di
+      seguito:</p>
+    <p><code>
+	typedef struct ListNode {<br>
+	&nbsp;&nbsp;int value;<br>
+	&nbsp;&nbsp;struct ListNode* next;<br>
+	} ListNode;
+    </code></p>
+    <p>implementare la seguente funzione <strong>ricorsiva</strong> C
+      (nessuna istruzione di ciclo &egrave; permessa):</p>
+    <p><code>float recursive_norm(ListNode* l);</code></p>
+    <p>che restituisce la norma degli elementi della lista passata
+    come parametro. Si ricorda che la norma degli elementi corrisponde
+    alla radice quadrata della somma degli elementi elevati al
+    quadrato.</p>
+
+    <h3>Esempio</h3>
+    <p>Dato la seguente lista di interi <code>l</code>:</p>
+    <p><code>
+	-2 -&gt; -7 -&gt; 3 -&gt; 5 -&gt; -4 -&gt; 2
+    </code></p>
+
+    <p>Richiamando la seguente linea di codice:</p>
+    <p><code>float norm = recursive_norm(l);</code></p>
+    <p><code>norm</code> dovr&agrave; contenere il valore <code>10.34408</code></p>
+    <hr>
+
+    <p><br></p>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,8 @@
+ifconfig eth0 10.3.0.6 netmask 255.255.255.252 up
+ifconfig eth1 10.3.0.1 netmask 255.255.255.252 up
+ifconfig eth2 10.1.0.21 netmask 255.255.255.252 up
+ifconfig eth3 10.1.0.26 netmask 255.255.255.252 up
+/etc/init.d/zebra start
+
+route add default gw 10.3.0.5
+route add -net 10.2.0.0 netmask 255.255.0.0 gw 10.3.0.2

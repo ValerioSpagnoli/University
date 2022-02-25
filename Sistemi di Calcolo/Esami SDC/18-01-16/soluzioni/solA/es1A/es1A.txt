@@ -1,0 +1,72 @@
+Soluzione:
+
+Traccia delle allocazioni/deallocazioni:
+malloc(12) == 0x9ab010
+calloc(4) == 0x9ab030
+calloc(8) == 0x9ab050
+calloc(12) == 0x9ab070
+calloc(12) == 0x9ab090
+free(0x9ab030)
+calloc(12) == 0x9ab030
+free(0x9ab050)
+
+1. Come è partizionato l’heap in blocchi liberi/in uso dopo ogni malloc/free?
+
+p1 = malloc(12)
+
+p1
+|===|
+
+p2 = calloc(1,4) -> come calloc(1,8)
+
+p1  p2
+|===|==|
+
+p3 = calloc(2,4)
+
+p1  p2 p3
+|===|==|==|
+
+p4 = calloc(12)
+
+p1  p2 p3 p4
+|===|==|==|===|
+
+p5 = calloc(12)
+
+p1  p2 p3 p4  p5
+|===|==|==|===|===|
+
+free(p2)
+
+p1  p2 p3 p4  p5
+|===|..|==|===|===|
+
+p6 = calloc(12)
+	
+p1  p2 p3 p4  p5  p6
+|===|..|==|===|===|===|
+
+free(p3)
+
+p1  p2 p3 p4  p5  p6
+|===|..|..|===|===|===|
+
+2. Si genera frammentazione durante l’esecuzione del programma?
+Se sì, di che tipo?
+
+Sia interna che esterna. Interna quando si alloca p2; infatti viene
+emessa una malloc(4) che, per il vincolo di dimensione minima di blocco,
+comporta un'allocazione di un blocco da 8 byte. Esterna in quanto
+l'allocazione di p6 non sfrutta lo spazio libero esistente.
+
+3. Quanto è grande l’heap prima della fine del main?
+
+16*4 = 64 byte
+
+4. Come cambieresti il programma in modo da ridurre la dimensione
+dell’heap senza alternarne il comportamento?
+
+Nella funzione make_square prima deallocherei tutte le righe della
+matrice, poi le riallocherei. In questo modo, alla fine l'heap sarebbe
+di dimensione 16 byte inferiore, cioè 48 invece che 64 byte.

@@ -1,0 +1,23 @@
+public class Automobile {
+	//campi dati privati per la rappresentazione degli oggetti automobile
+	private String targa;
+	private String modello;
+	private String colore;
+	private String proprietario;
+	
+	//campi funzione pubblici 
+	
+	//costruttori
+	public Automobile(String t, String m, String c) {
+		
+	}
+	public Automobile(String t, String m, String c, Persona p) {
+		
+	}
+	
+	
+	//funzionalità pubbliche della classe
+	
+	//funzioni ausiliarie
+
+}

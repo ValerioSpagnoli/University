@@ -1,0 +1,18 @@
+package lista;
+
+import java.util.Collection;
+import java.util.Iterator;
+
+public interface List<E> extends Collection<E>{
+	boolean add(int index, E element);
+	boolean remove(int index);
+	void clear();
+	E get(int index);
+	E set(int index, E element);
+	int indexOf(Object o);
+	int lastIndexOf(Object o);
+	List<E> subList(int fromIndex, int toIndex);
+	Iterator<E> iterator();
+	public boolean equals(Object o);
+	public int hashCode();
+}

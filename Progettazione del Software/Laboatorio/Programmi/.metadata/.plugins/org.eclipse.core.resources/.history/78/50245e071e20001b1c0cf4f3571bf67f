@@ -1,0 +1,27 @@
+package display;
+
+import java.awt.*;
+import javax.swing.*;
+
+
+public class Display {
+	
+	final BorderLayout bordeLayout = new BorderLayout();
+	
+	//pannello Nord
+	final JPanel nordPanel = new JPanel();
+	final GridLayout nordGridLayout = new GridLayout(2,2);
+	final JTextArea matricola = new JTextArea(1, 30);
+	final JTextArea IPaddress = new JTextArea(1, 30);
+	final JTextArea porta = new JTextArea (1, 30);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

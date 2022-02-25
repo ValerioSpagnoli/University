@@ -1,0 +1,22 @@
+package frame;
+
+public class Operazione {
+	
+	double x, y;
+	
+	public double somma (double x, double y) {
+		return x + y;
+	}
+	public double differenza (double x, double y) {
+		return x - y;
+	}
+	public double moltiplicazione (double x, double y) {
+		return x * y;
+	}
+	public double divisione (double x, double y) {
+		return x / y;
+	}
+	
+	
+
+}

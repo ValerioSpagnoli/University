@@ -1,0 +1,7 @@
+Sostituendo la condizione dell'if come indicato, un processo che è interessato ad entrare in CS metterà il turno pari a se stesso anche se in quel momento era il turno di un altro che stava in CS (e che quindi era interessato).
+A questo punto il processo arriva al controllo del ciclo for, e dato che è presente un processo in CS rinuncerà ad entrare ritornando alla riga 3. 
+Quindi l'errore nell'if viene corretto dal secondo controllo.
+Continua quindi ad essere garantita mutua esclusione.
+
+Se si interessano una serie di processi che però sono tutti diversi dal processo che ha la variabile k pari a se stesso, questi rimangono bloccati sul controllo dell'if, perché y[k] = false. Se il processo che ha id = k si interessa poi sbloccherà tutti i processi e l'esecuzione andrà avanti, altrimenti questi rimarranno bloccati.
+Quindi non c'è un vero e proprio deadlock, ma dei processi potrebbero rimanere bloccati.

@@ -1,0 +1,63 @@
+package classe;
+
+import insegnante.Insegnante;
+import scuola.Scuola;
+
+public class Classe {
+	
+	//costanti
+	private static final int numeroInsegnanti = 3;
+	
+	//campi dati 
+	
+	private final Scuola scuolaAppartenenza;
+	private final String nome;
+	private Insegnante[] insegnanti;
+	private int numeroAlunni;
+	
+	//costruttore
+	
+	public Classe(String nome, Scuola scuolaAppartenenza, Insegnante[] insegnanti, int numeroAlunni) {
+		this.nome = nome;
+		this.scuolaAppartenenza = scuolaAppartenenza;
+		this.insegnanti = new Insegnante[numeroInsegnanti];
+		this.numeroAlunni = numeroAlunni;
+	}
+	
+	//metodi
+	
+	public String getNome() {
+		return nome;
+	}
+	
+	public Scuola getScuolaAppartenenza() {
+		return scuolaAppartenenza;
+	}
+	
+	public Insegnante[] getInsegnanti(){
+		return insegnanti;
+	}
+	
+	public int getNumeroAlunni() {
+		return numeroAlunni;
+	}
+	
+	public void sostituisciInsegnante(Insegnante insIn, Insegnante insOut) {
+		boolean trovato = false;
+		for(int i = 0; i < numeroInsegnanti && !trovato; i++) {
+			if(insegnanti[i].equals(insOut)) {
+				insegnanti[i] = null;
+				insegnanti[i] = insIn;
+				trovato = true;
+			}
+		}
+	}
+	
+}
+
+
+
+
+
+
+

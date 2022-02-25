@@ -1,0 +1,20 @@
+package figureGeometriche;
+
+public class Elisse extends FiguraGeometrica{
+	
+	private final double semiasseMaggiore, semiasseMinore;
+	
+	public Elisse(double a, double b) {
+		if(a>b) {
+			this.semiasseMaggiore = a;
+			this.semiasseMinore = b;
+		}
+		else {
+			this.semiasseMaggiore = b;
+			this.semiasseMinore = a;
+		}
+	}
+	
+	
+
+}

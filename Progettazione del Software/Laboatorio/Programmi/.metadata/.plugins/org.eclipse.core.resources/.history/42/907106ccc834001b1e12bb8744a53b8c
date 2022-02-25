@@ -1,0 +1,36 @@
+package server;
+
+import java.net.*;
+import java.util.*;
+import java.util.logging.*;
+import java.io.*;
+
+public class Server {
+	
+	private static Logger logger = Logger.getLogger("server.Server");
+	private ServerSocket server = null;
+	
+	public Server (int port) {
+		try {
+			logger.log(Level.INFO, "Binding to port " + port);
+			server = new ServerSocket(port);
+			logger.log(Level.INFO, "Server started: " + server);
+			
+			while(true) {
+				try {
+					logger.log(Level.INFO, "Waiting for a client ...");
+					Socket socket = server.accept();
+					logger.log(Level.INFO, "Client accepted: " + socket);
+					
+					ClientHandler cl = new ClientHandler(socket);
+					Thread tr = new Thread(cl);
+					tr.start();
+				} catch (IOException ioe) {
+					logger.log(Level.SEVERE, ioe.getMessage(), ioe.getStackTrace());
+				}
+			}
+		} catch (IOException ioe) {
+			logger.log(Level.SEVERE, ioe.getMessage(), ioe.getStackTrace());
+		}
+	}
+}

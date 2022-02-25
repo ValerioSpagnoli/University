@@ -1,0 +1,25 @@
+Nel paradigma N:M il sistema produttore consumatore si presenta così:
+
+sem_t sem_wr;
+sem_t sem_rd;
+sem_t sem_empty;
+sem_t sem_filled;
+
+
+Producer(){
+	produce();		//produce
+	sem_wait(sem_empty);	//prenota uno spazio nel buffer (se non è presente si blocca)
+	sem_wait(sem_wr);	//prenota la CS
+	append();		//appende al buffer
+	sem_post(sem_wr);	//rilascia la CS
+	sem_post(sem_filled);	//segnala che è disponibile una risorsa nel buffer
+}
+
+Consumer(){
+	sem_wait(sem_filled);	//prenota una risorsa nel buffer (se non è presente si blocca)
+	sem_wait(sem_rd);	//prenota la CS
+	take();			//prende una risorsa dal buffer
+	sem_post(sem_rd);	//lascia la CS
+	sem_post(sem_empty);	//segnala che è disponibile uno spazio nel buffer
+	consume();		//consuma
+}

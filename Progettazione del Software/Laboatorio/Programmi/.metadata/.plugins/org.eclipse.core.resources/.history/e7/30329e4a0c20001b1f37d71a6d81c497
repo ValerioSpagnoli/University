@@ -1,0 +1,30 @@
+package panel;
+
+import javax.swing.*;
+
+public class Panel {
+	private static final String titolo = "Pannello Digitale";
+	
+	//principale 
+	JFrame frame  = new JFrame(titolo);
+	frame.setVisible(true);
+	private static final JPanel leftPanel = new JPanel();
+	private static final JPanel rightPanel = new JPanel();
+
+
+	//pannello sinistra
+	private static final JPasswordField password = new JPasswordField();
+	private static final JPanel tastiera = new JPanel();
+	
+	
+	
+	//Pannello destra
+	private static final JLabel insCodice = new JLabel();
+	private static final JTextArea codVisible = new JTextArea();
+	
+	
+		
+	
+	
+
+}

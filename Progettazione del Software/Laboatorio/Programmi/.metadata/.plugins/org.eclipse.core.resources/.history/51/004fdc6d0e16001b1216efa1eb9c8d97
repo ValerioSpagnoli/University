@@ -1,0 +1,53 @@
+package classe;
+
+import insegnante.Insegnante;
+import scuola.Scuola;
+
+public class Classe {
+	
+	//campi dati 
+	
+	private final Scuola scuolaAppartenenza;
+	private final String nome;
+	private Insegnante[] insegnanti;
+	private int numeroAlunni;
+	
+	//costruttore
+	
+	public Classe(String nome, Scuola scuolaAppartenenza, Insegnante[] insegnanti, int numeroAlunni) {
+		this.nome = nome;
+		this.scuolaAppartenenza = scuolaAppartenenza;
+		this.insegnanti = insegnanti;
+		this.numeroAlunni = numeroAlunni;
+	}
+	
+	//metodi
+	
+	public String getNome() {
+		return nome;
+	}
+	
+	public Scuola getScuolaAppartenenza() {
+		return scuolaAppartenenza;
+	}
+	
+	public Insegnante[] getInsegnanti(){
+		return insegnanti;
+	}
+	
+	public int getNumeroAlunni() {
+		return numeroAlunni;
+	}
+	
+	public void setInsegnanti() {
+		
+	}
+	
+}
+
+
+
+
+
+
+

@@ -1,0 +1,13 @@
+Nome_Squadra1,Nome_Squadra2,Numero_gol_Squadra1,Numero_golSquadra2
+Bayern,Schalke,4,0
+Amburgo,Werder,11,8
+Stoccarda,Colonia,0,1
+Werder,Bayern,0,0
+Colonia,Amburgo,11,11
+Schalke,Stoccarda,2,1
+Schalke,Bayern,4,0
+Werder,Amburgo,11,8
+Colonia,Stoccarda,0,1
+Bayern,Werder,0,0
+Amburgo,Colonia,11,11
+Stoccarda,Schalke,2,1

@@ -1,0 +1,32 @@
+package client;
+
+import java.awt.*;
+import javax.swing.*;
+
+public class Frame extends JFrame{
+	
+	JFrame frame = new JFrame();
+	BorderLayout frameLayout = new BorderLayout();
+	
+	//north
+	JPanel northPanel = new JPanel();
+	JLabel ipAddressLabel = new JLabel("IP Address");
+	JLabel portLabel = new JLabel("Port");
+	JTextField ipAddressText = new JTextField(10);
+	JTextField portText = new JTextField(10);
+	JButton connectBtn = new JButton("Connect");
+	JButton disconnectBtn = new JButton("Disconnect");
+	
+	//center
+	JPanel centerPanel = new JPanel();
+	GridLayout centerLayout = new GridLayout(2,3);
+	JButton starkButton = new JButton("STARK");
+	JButton targaryenBtn = new JButton("TARGARYEN");
+	JButton lannisterBtn = new JButton("LANNISTER");
+	JTextArea starkText = new JTextArea(20,40);
+	JTextArea targaryenText = new JTextArea(20,40);
+	JTextArea lannisterText = new JTextArea(20,40);
+	
+	//south
+	
+}

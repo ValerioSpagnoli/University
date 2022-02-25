@@ -1,0 +1,20 @@
+package server;
+
+import java.net.*;
+import java.util.*;
+import java.util.logging.*;
+import java.io.*;
+
+public class Server {
+	
+	private static Logger logger = Logger.getLogger("server.Server");
+	private server = null;
+	
+	public Server (int port) {
+		try {
+			logger.log(Level.INFO, "Binding to port " + port);
+			server = new ServerSocket(port);
+			
+		}
+	}
+}

@@ -1,0 +1,10 @@
+package esercizio_1;
+
+public class Esercizio_1 {
+	
+	public int [][] generaMatrice(int n, int m) {
+		
+		
+	}
+
+}

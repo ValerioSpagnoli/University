@@ -1,0 +1,8 @@
+Nome:
+Cognome:
+Matricola:
+E-mail:
+
+Fornisco il consenso alla pubblicazione dei risultati nella
+forma <matricola, voto> sul sito del corso (SI/NO): SI
+

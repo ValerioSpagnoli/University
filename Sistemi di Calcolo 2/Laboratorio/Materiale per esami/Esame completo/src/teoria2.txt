@@ -1,0 +1,22 @@
+Togliendo il not nella condizione dell'if alla riga 4, la semantica dell'algoritmo diventa:
+
+1. Dico che sono interessato
+2. Se non è il mio turno
+3. Dico che non sono passato
+4. Se il processo di cui è attualmente il turno è interessato, mi prendo il turno
+5. Dico che sono passato
+6. Per ogni processo eccetto me, se qualcun altro è passato torno al while a riga 2.
+8. Altrimenti entro in CS
+9. Quando esco dalla CS dico che non sono interessato e non sono passato
+
+Mutua esclusione: 
+Con questa semantica, se un processo P1 imposta riesce ad andare il CS, significa il ha:
+K = P1, interested = true, passed = true.
+Quindi il processo P2 (che vuole andare in CS) mette interested = true ed entra nel while (perché il turno non è uguale al suo), mette passed = false, e controlla la condizione dell'if, la quale risulta vera. Quindi P2 imposta k = P2 ed esce dal while e mette passed = true. A questo punto controlla se qualche altro processo è passato e dato che P1 si trova in CS e ha passed = true, il processo P2 tornerà al while alla riga 2, esegue i controlli, risposta, il turno uguale a se stesso e torna nel for.
+Continua così fino a quando P1 non esce dalla CS e mette passed e interested a false.
+Quindi la mutua esclusione è garantita.
+
+No deadlock:
+Finché c'è un solo processo interessato e k!=i questo non riesce ad entrare quindi rimane bloccato. Quando il processo con k = i si interessa automaticamente sblocca gli altri processi che possono andare in CS con la procedura descritta sopra. Quindi no deadlock è garantito.
+
+Rimane sempre la possibilità di starvation.

@@ -1,0 +1,67 @@
+1. Descrivere le ottimizzazioni applicate manualmente e dire perché si ritiene che siano efficaci.
+
+E' stata aumentata la località spaziale fondendo due cicli che prima accedevano separatamente a elem[0] ed elem[1]. Non è stato effettuato inlining della funzione get poiché già effettuato dal compilatore. La funzione sum_i non contiene infatti chiamate a get:
+
+sum_i:
+	movl	4(%esp), %edx
+	movl	8(%esp), %ecx
+	testl	%edx, %edx
+	je	.L5
+	movl	$0, %eax
+.L4:
+	addl	(%edx,%ecx,4), %eax
+	movl	8(%edx), %edx
+	testl	%edx, %edx
+	jne	.L4
+	rep ret
+.L5:
+	movl	$0, %eax
+	ret
+
+2. Riportare la media dei tempi di esecuzione (real) di tre run di es3C e di es3C-opt. I tempi possono essere ottenuti usando il comando time.
+
+> time ./es3C
+Output 3567587328 (atteso: 3567587328) -- OK
+
+real	0m1.233s
+user	0m1.222s
+sys	0m0.008s
+> time ./es3C
+Output 3567587328 (atteso: 3567587328) -- OK
+
+real	0m1.276s
+user	0m1.261s
+sys	0m0.008s
+> time ./es3C
+Output 3567587328 (atteso: 3567587328) -- OK
+
+real	0m1.268s
+user	0m1.247s
+sys	0m0.004s
+
+---> media: (1.233 + 1.276 + 1.268)/3 = 1.259
+
+> time ./es3C-opt
+Output 3567587328 (atteso: 3567587328) -- OK
+
+real	0m0.812s
+user	0m0.783s
+sys	0m0.008s
+> time ./es3C-opt
+Output 3567587328 (atteso: 3567587328) -- OK
+
+real	0m0.772s
+user	0m0.753s
+sys	0m0.012s
+> time ./es3C-opt
+Output 3567587328 (atteso: 3567587328) -- OK
+
+real	0m0.778s
+user	0m0.762s
+sys	0m0.012s
+
+---> media: (0.812 + 0.772 + 0.778)/3 = 0.787
+
+3. Riportare lo speedup di es3C-opt rispetto es3C
+
+1.259/0.787 = 1.6x

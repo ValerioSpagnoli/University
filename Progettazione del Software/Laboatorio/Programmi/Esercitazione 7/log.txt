@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-11-28T15:25:21.944294Z</date>
+  <millis>1606577121944</millis>
+  <nanos>294000</nanos>
+  <sequence>0</sequence>
+  <logger>logging.Log_2</logger>
+  <level>WARNING</level>
+  <class>logging.Log_2</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>problemi nel metodo</message>
+  <exception>
+    <message>java.lang.ArrayIndexOutOfBoundsException: Index 10 out of bounds for length 10</message>
+    <frame>
+      <class>logging.Log_2</class>
+      <method>metodoEsempio</method>
+      <line>13</line>
+    </frame>
+    <frame>
+      <class>logging.Log_2</class>
+      <method>main</method>
+      <line>26</line>
+    </frame>
+  </exception>
+</record>
+<record>
+  <date>2020-11-28T15:25:22.039851Z</date>
+  <millis>1606577122039</millis>
+  <nanos>851000</nanos>
+  <sequence>1</sequence>
+  <logger>logging.Log_2</logger>
+  <level>FINE</level>
+  <class>logging.Log_2</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>fatto</message>
+</record>
+</log>

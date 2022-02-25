@@ -1,0 +1,20 @@
+La system call fork serve per creare un nuovo processo. Viene chiamata da un processo (che diventerà processo padre) e restituisce:
+-- -1 in caso di errore
+-- 0 per il processo figlio
+-- identificativo del processo figlio per il processo padre
+Quindi il pattern di utilizzo è:
+
+pid_t pid = fork();
+if(pid == -1){
+	ERRORE ...
+}
+Else if(pid == 0){
+	PROCESSO FIGLIO
+	...
+	_exit(0);
+}
+Else{
+	PROCESSO PADRE
+}
+
+Il PCB del processo figlio al momento della chiamata della fork è una copia identica del PCB del processo padre. L'esecuzione procede con l'istruzione successiva alla fork per entrambi, ed infatti al figlio verrà restituito 0 ed entrerà nell'if giusto. Allo stesso modo, la memoria dedicata al processo figlio e i registri della CPU, alla chiamata della fork sono una copia di quelli del padre.

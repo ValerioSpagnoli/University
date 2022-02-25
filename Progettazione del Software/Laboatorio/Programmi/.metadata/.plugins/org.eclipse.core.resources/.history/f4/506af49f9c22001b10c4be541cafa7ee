@@ -1,0 +1,15 @@
+package frame;
+
+import java.awt.event.*;
+import javax.swing.*;
+
+public class Listener implements ActionListener{
+		
+	private Frame display;
+	
+	private String Tinserito = "";
+	
+	public Listener(Frame displayA) {
+		this.display = displayA;
+	}
+}

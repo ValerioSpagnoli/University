@@ -1,0 +1,25 @@
+package client;
+
+import java.awt.event.*;
+import java.awt.*;
+
+public class ClientListener implements ActionListener{
+	
+	public static final String CONNECT = "connect";
+	public static final String DISCONNECT = "disconnect";
+	public static final String START = "start";
+	public static final String STOP = "stop";
+	
+	private JText
+	
+	public ClientListener() {
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

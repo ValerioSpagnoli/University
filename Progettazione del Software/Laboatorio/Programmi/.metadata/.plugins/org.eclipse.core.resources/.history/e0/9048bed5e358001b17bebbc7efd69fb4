@@ -1,0 +1,96 @@
+package client;
+
+import java.util.Scanner;
+
+public class Downloader implements Runnable{
+	
+	private Frame frame;
+	private Scanner scanner;
+	private boolean running = false;
+	
+	Character[] starkC = new Character[100];
+	Character[] targaryenC = new Character[100];
+	Character[] lannisterC = new Character[100];
+	
+	public Downloader(Frame frame, Scanner scanner) {
+		this.frame = frame;
+		this.scanner = scanner;
+	}
+	
+	public void run() {
+		if(!running) {
+			running = true;
+			while(running) {
+				String stringa = scanner.nextLine();
+				
+				if(stringa.equals("end")) {
+					running = false;
+				}
+				else {
+					String[] dati = stringa.split(",");
+					String nome = dati[0];
+					String cognome = dati[1];
+					String casata = dati[2];
+					String ruolo = dati[3];
+					
+					if(casata.equals("STARK")) {
+						Character c = new Character(nome, cognome, casata, ruolo);
+						if(checkDoppione(c, starkC)) { 
+							String testo = "";
+							for(int i = 0; starkC[i]!=null; i++) {
+								testo = starkC[i].toString() + "\n";
+							}
+							testo = testo + "\n\nDOPPIONE RICEVUTO"
+							frame.starkText.setText(testo);
+						}
+						else {
+							int s = 0;
+							boolean inserito = false;
+							for(int i = 0; starkC[i] != null || !inserito; i++) {
+								int compare = c.compareTo(starkC[i]);
+								if(compare>0) {
+									for(int j = 0; j<i; j++) {
+										starkC[j] = starkC[j];
+									}
+									starkC[i] = c;
+									for(int j = i+1; j<starkC.length-1; j++) {
+										starkC[j] = starkC[i];
+									}
+									inserito = true;
+								}
+								s++;
+							}
+							if(!inserito) {
+								starkC[s] = c;
+							}
+							
+							String testo = "";
+							for(int i = 0; starkC[i]!=null; i++) {
+								testo = starkC[i].toString() + "\n";
+							}
+							frame.starkText.setText(testo);
+						}
+					}
+					else if(casata.equals("TARGARYEN")) {
+						
+					}
+					else if(casata.equals("LANNISTER")) {
+						
+					}
+					
+					
+					
+				}
+			}
+			frame.setButtons(true,false);
+		}
+	}
+	
+	private boolean checkDoppione(Character c, Character[] v) {
+		for(int i = 0; i<v.length; i++) {
+			if(c.getName().equals(v[i].getName())) return true;
+		}
+		return false;
+	}
+
+}

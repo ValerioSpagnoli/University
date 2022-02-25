@@ -1,0 +1,29 @@
+package client;
+
+import java.net.*;
+import java.io.*;
+import java.util.*;
+import java.util.logging.*;
+
+public class Client {
+	
+	private static Logger logger = Logger.getLogger("client.Client");
+	private Socket socket = null;
+	private Scanner console = null;
+	private PrintWriter streamOut = null;
+	
+	public Client(String serverName, int serverPort) {
+		logger.log(Level.INFO, "Establishing connection. Please wait ...");
+		
+		try {
+			
+		} 
+		catch(UnknownHostException uhe) {
+			
+		}
+		catch(IOException ioe) {
+			
+		}
+	}
+	
+}

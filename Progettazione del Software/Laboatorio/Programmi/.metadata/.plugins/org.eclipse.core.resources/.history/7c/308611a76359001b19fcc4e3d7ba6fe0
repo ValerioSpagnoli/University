@@ -1,0 +1,49 @@
+package client;
+
+import java.util.Scanner;
+
+public class Downloader implements Runnable{
+	
+	private Frame frame;
+	private Scanner scanner;
+	private boolean running = false;
+	
+	Character[] stark = new Character[100];
+	Character[] targaryen = new Character[100];
+	Character[] lannister = new Character[100];
+	
+	public Downloader(Frame frame, Scanner scanner) {
+		this.frame = frame;
+		this.scanner = scanner;
+	}
+	
+	public void run() {
+		if(!running) {
+			running = true;
+			while(running) {
+				String stringa = scanner.nextLine();
+				
+				if(stringa.equals("end")) {
+					running = false;
+				}
+				else {
+					String[] dati = stringa.split(",");
+					String nome = dati[0];
+					String cognome = dati[1];
+					String casata = dati[2];
+					String ruolo = dati[3];
+					
+					
+					
+					
+					
+					
+				}
+			}
+			frame.setButtons(true,false);
+		}
+	}
+	
+
+
+}

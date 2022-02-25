@@ -1,0 +1,165 @@
+package client;
+
+import java.util.Scanner;
+
+public class Downloader implements Runnable{
+	
+	private Frame frame;
+	private Scanner scanner;
+	private boolean running = false;
+	
+	Character[] starkC = new Character[100];
+	int numberStark = 0;
+	Character[] targaryenC = new Character[100];
+	int numberTargaryen = 0;
+	Character[] lannisterC = new Character[100];
+	int numberLannister = 0;
+	
+	public Downloader(Frame frame, Scanner scanner) {
+		this.frame = frame;
+		this.scanner = scanner;
+	}
+	
+	public void run() {
+		if(!running) {
+			running = true;
+			while(running) {
+				String stringa = scanner.nextLine();
+				
+				if(stringa.equals("end")) {
+					running = false;
+				}
+				else {
+					String[] dati = stringa.split(",");
+					String nome = dati[0];
+					String cognome = dati[1];
+					String casata = dati[2];
+					String ruolo = dati[3];
+					
+					if(casata.equals("STARK")) {
+						Character c = new Character(nome, cognome, casata, ruolo);
+						
+						if(numberStark == 0) {
+							starkC[0] = c;
+							numberStark = numberStark+1;
+						}
+						else {
+							String testo = "";
+							boolean doppione = false;
+							int s = 0;
+							for(int i = 0; i<100 && starkC[i] != null; i++) {
+								if(c.compareTo(starkC[i])<0) { //c è minore dell'iesimo
+									c.add(c, starkC, i);			//aggiungi c in posizione i
+								}
+								else { //c è uguale all'iesimo
+									doppione = true;
+								}
+								s = s+1;
+							}
+							if(!doppione) {
+								c.add(c, starkC, s);
+								for(int i = 0;i<100;i++) {
+									testo = testo + starkC[i].toString() + "\n";
+								}
+							}
+							else {
+								for(int i = 0; i<100; i++) {
+									testo = testo + starkC[i].toString() + "\n";
+								}
+								testo = testo + "\n\nDOPPIONE RICEVUTO";
+							}
+							frame.starkText.setText(testo);
+						}
+						
+					}
+					
+					else if(casata.equals("TARGARYEN")) {
+						Character c = new Character(nome, cognome, casata, ruolo);
+						
+						if(numberTargaryen == 0) {
+							targaryenC[0] = c;
+							numberTargaryen = numberTargaryen+1;
+						}
+						else {
+							String testo = "";
+							boolean doppione = false;
+							int s = 0;
+							for(int i = 0; i<100 && targaryenC[i] != null; i++) {
+								if(c.compareTo(targaryenC[i])<0) { //c è minore dell'iesimo
+									c.add(c, targaryenC, i);			//aggiungi c in posizione i
+								}
+								else { //c è uguale all'iesimo
+									doppione = true;
+								}
+								s = s+1;
+							}
+							if(!doppione) {
+								c.add(c, targaryenC, s);
+								for(int i = 0;i<100;i++) {
+									testo = testo + targaryenC[i].toString() + "\n";
+								}
+							}
+							else {
+								for(int i = 0; i<100; i++) {
+									testo = testo + targaryenC[i].toString() + "\n";
+								}
+								testo = testo + "\n\nDOPPIONE RICEVUTO";
+							}
+							frame.targaryenText.setText(testo);
+						}
+					}
+					
+					else if(casata.equals("LANNISTER")) {
+						Character c = new Character(nome, cognome, casata, ruolo);
+						
+						if(numberStark == 0) {
+							starkC[0] = c;
+							numberStark = numberStark+1;
+						}
+						else {
+							String testo = "";
+							boolean doppione = false;
+							int s = 0;
+							for(int i = 0; i<100 && starkC[i] != null; i++) {
+								if(c.compareTo(starkC[i])<0) { //c è minore dell'iesimo
+									c.add(c, starkC, i);			//aggiungi c in posizione i
+								}
+								else { //c è uguale all'iesimo
+									doppione = true;
+								}
+								s = s+1;
+							}
+							if(!doppione) {
+								c.add(c, starkC, s);
+								for(int i = 0;i<100;i++) {
+									testo = testo + starkC[i].toString() + "\n";
+								}
+							}
+							else {
+								for(int i = 0; i<100; i++) {
+									testo = testo + starkC[i].toString() + "\n";
+								}
+								testo = testo + "\n\nDOPPIONE RICEVUTO";
+							}
+							frame.starkText.setText(testo);
+						}
+					}
+					
+					
+					
+				}
+			}
+			frame.setButtons(true,false);
+		}
+	}
+	
+	private boolean checkDoppione(Character c, Character[] v) {
+		for(int i = 0; i<v.length; i++) {
+			if(v[i] != null) {
+				if(c.getName().equals(v[i].getName())) return true;
+			}
+		}
+		return false;
+	}
+
+}

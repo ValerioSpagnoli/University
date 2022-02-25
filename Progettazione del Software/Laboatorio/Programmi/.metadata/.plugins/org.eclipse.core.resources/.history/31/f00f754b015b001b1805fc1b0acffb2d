@@ -1,0 +1,49 @@
+package client;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.util.Scanner;
+import java.util.logging.Logger;
+
+import javax.swing.JTextField;
+
+public class ClientListener implements ActionListener{
+	
+	private static final String CONNECT = "connect";
+	private static final String DISCONNECT = "disconnect";
+	private static final String START = "start";
+	private static final String STOP = "stop";
+	
+	private Frame frame;
+	private JTextField ipAddress;
+	private JTextField port;
+	private Logger logger = Logger.getLogger("client.ClientListener");
+	
+	private boolean connected = false;
+	private boolean transmitting = false;
+	
+	private Downloader downloader;
+	
+	private Socket socket;
+	private OutputStream outputStream;
+	private PrintWriter printWriter;
+	private Scanner scanner;
+	
+	public ClientListener() {
+		
+	}
+	
+	private void setupConnection() {
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

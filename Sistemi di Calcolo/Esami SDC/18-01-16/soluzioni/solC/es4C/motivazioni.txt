@@ -1,0 +1,18 @@
+Inserisci qui sotto le motivazioni alle risposte date.
+
+-----------------------------
+Domanda 1
+
+Spazio logico = 2 GB = 2*1024*1024 KB
+Dimensione frame = dimensione pagina = 64 KB
+
+2*1024*1024 KB / 64 KB = 32768 entry
+
+-----------------------------
+Domanda 2
+
+-----------------------------
+Domanda 3
+
+-----------------------------
+Domanda 4

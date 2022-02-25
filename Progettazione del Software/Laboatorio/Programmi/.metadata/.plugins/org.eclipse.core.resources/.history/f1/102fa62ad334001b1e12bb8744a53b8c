@@ -1,0 +1,23 @@
+package client;
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.util.logging.*;
+
+public class ListenerClient implements ActionListener{
+	
+	private final static String CONNECT = "connect";
+	
+	public ListenerClient(String server, String port) {
+		
+	}
+
+	public void actionPerformed(ActionEvent arg0) {
+		
+	}
+	
+	
+	
+	
+}

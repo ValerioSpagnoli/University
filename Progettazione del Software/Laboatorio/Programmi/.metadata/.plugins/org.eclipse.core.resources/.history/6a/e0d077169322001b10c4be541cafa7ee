@@ -1,0 +1,21 @@
+package frame;
+
+import java.awt.*;
+import javax.swing.*;
+
+public class Frame extends JFrame{
+	
+	final BorderLayout borderLayout = new BorderLayout();
+	
+	//pannello nord
+	final JPanel nordPanel = new JPanel();
+	final JLabel schermo = new JLabel();
+	final JTextArea schermoText = new JTextArea();
+	
+	//pannello sud
+	final JPanel sudPanel = new JPanel();
+	final GridLayout sudGridLayout = new GridLayout();
+	final JPanel tastiera = new JPanel();
+	
+	//pannello centro
+}

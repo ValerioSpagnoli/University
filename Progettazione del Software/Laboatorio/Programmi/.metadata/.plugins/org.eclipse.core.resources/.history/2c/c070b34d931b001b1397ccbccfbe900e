@@ -1,0 +1,10 @@
+package figureGeometriche;
+
+public class Triangolo {
+	
+	//proprietà
+	private final int l1;
+	private final int l2;
+	private final int l3;
+	
+}

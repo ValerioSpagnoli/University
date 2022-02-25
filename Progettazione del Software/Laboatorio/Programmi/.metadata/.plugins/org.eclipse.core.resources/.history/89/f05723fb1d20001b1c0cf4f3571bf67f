@@ -1,0 +1,20 @@
+package display;
+
+import java.awt.*;
+import javax.swing.*;
+
+
+public class Display {
+	
+	final BorderLayout bordeLayout = new BorderLayout();
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

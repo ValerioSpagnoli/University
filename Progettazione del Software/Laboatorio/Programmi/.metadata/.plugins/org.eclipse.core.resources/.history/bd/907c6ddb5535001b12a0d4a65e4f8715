@@ -1,0 +1,13 @@
+package client;
+
+import java.net.*;
+import java.io.*;
+import java.util.*;
+import java.util.logging.*;
+
+public class Client {
+	
+	private static Logger logger = Logger.getLogger("client.Client");
+	
+	
+}

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=windows-1252" http-equiv="content-type">
+  <title>Esame di Tecniche di Programmazione del 17/06/2016</title>
+  <style>
+    img {
+    margin: 15px;
+    }
+    
+    .maxwidth {
+    font-family: Verdana, Geneva, sans-serif;
+    max-width: 1000px;
+    margin: auto;
+    position: absolute;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%);
+    }
+    
+    hr {
+    border: 1px solid;
+    color: gray;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="maxwidth">
+    
+    <h1>Esame di Tecniche di Programmazione del 17/06/2016</h1>
+    <hr>
+
+    <h3>Istruzioni per lo svolgimento della prova:</h3>
+    <ul>
+      <li>Scaricare il compito digitando in un terminale il comando
+	<strong><code>TDP_download_compito.bash</code></strong>, in caso di
+	problemi &egrave; possibile scaricare il compito cliccando sul link
+	in fondo a questa pagina. In questo caso dovrete decomprimere il
+	file scaricato nella cartella TDP presenta nella home directory e
+	avviare il form per il riempimento dei dati personali con il
+	comando <code>java DatiStudenteGUI</code>. Questo comando deve essere
+	lanciato da terminale nella cartella d'esame dove &egrave; situato il
+	file DatiStudenteGUI.class</li>
+      <li>Inserire i propri dati personali (<strong>matricola, nome e
+	  cognome</strong>) nella GUI, quindi salvare e chiudere la
+	GUI.</li>
+      <li>All'esercizio i &egrave; associata la
+	directory <code>esercizio{i}</code>, contenente i file necessari
+	allo svolgimento dell'esercizio. Ciascun esercizio deve essere
+	svolto modificando esclusivamente il file <code>esercizio{i}.h
+	</code> (se necessario) ed <code>esercizio{i}.c</code> presenti
+	nella directory corrispondente. Nessun file per qualsiasi motivo
+	deve essere spostato dalla directory in cui si trova. Nessun altro
+	file deve essere modificato. Non devono essere creati ulteriori
+	file.</li>
+      <li>Il file contenente il programma principale di ciascun esercizio
+	&egrave; <code> test_esercizio{i}.c</code>. Tale file deve essere
+	compilato usando il <code> Makefile</code> fornito nella directory,
+	ed il corrispondente eseguibile (<code> test_esercizio{i}</code>)
+	lanciato per eseguire i test di correttezza e conoscerne l'esito. Il
+	file <code>test_esercizio{i}.c</code> non deve essere modificato per
+	alcun motivo.</li>
+      <li>Alla fine del tempo concesso per svolgere l' esame o, se lo
+	avete terminato prima dello scadere del tempo, dovete eseguire
+	lo <strong>script di consegna dell' esame</strong>. <strong>La
+	  consegna pu&ograve; essere effettuata una ed una volta sola</strong>, per
+	cui consegnate solo quando siete sicuri di volerlo fare. Per
+	consegnare il compito dovete digitare sul terminale il
+	comando <strong><code>TDP_upload_compito.bash</code></strong>. Una volta
+	avviato lo script di consegna controllate che sia andato tutto a
+	buon fine <strong>verificando</strong> che sul terminale venga
+	stampato un output simile al seguente:</li>
+      <p><code>local:
+  	  matricola_cognome_nome_hostname.tar.gz remote: 
+	  uploads/matricola_cognome_nome_hostname.tar.gz<br>
+	  &nbsp;&nbsp;200 PORT command successful. Consider using PASV.<br>
+	  &nbsp;&nbsp;150 Ok to send data.<br>
+	  &nbsp;&nbsp;226 Transfer complete. 4886 bytes sent in 0.00 secs (113606.8 kB/s)<br>
+	  &nbsp;&nbsp;221 Goodbye.</code></p>
+      <li>Verranno corretti esclusivamente gli esercizi la cui
+  	compilazione dia esito positivo. In caso contrario
+  	verr&agrave; assegnato un punteggio nullo. Se non verr&agrave;
+  	eseguito lo script di consegna dell' esame esso non
+  	verr&agrave; corretto (&egrave; equivalente a non aver
+  	consegnato il compito a fine esame).</li>
+      <li>Per eventuali problemi o dubbi, chiedere al docente.</li>
+    </ul>
+    <hr>
+
+    <p><br></p>
+
+    <h2>Esercizio 1</h2>
+    <p>Sia data la seguente struttura <code>Mat:</code></p>
+    <p><code>
+	typedef struct Mat {<br>
+	&nbsp;&nbsp;int cols; // numero di colonne<br>
+	&nbsp;&nbsp;int rows; // numero di righe<br>
+	&nbsp;&nbsp;float** row_ptrs; // puntatori alle righe<br>
+	} Mat;
+    </code></p>
+    <p>Implementare la seguente funzione C:</p>
+    <p><code>void matrix_compute_neighboor_sub(Mat* dest, Mat*
+	src);</code></p>
+    <p>che dati in input:
+      <ul>
+	<li>un puntatore ad una matrice <code>dest</code>, preallocata ed
+	  avente le stesse dimensioni di <code>src</code></li>
+	<li>un puntatore ad una matrice <code>src</code></li>
+      </ul>
+      inserisca in ogni cella <code>[r, c]</code> della matrice <code>dest</code>,
+      la differenza tra la cella <code>[r, c]</code> e tutti i suoi
+      otto vicini.</p>
+    <p>Gli otto vicini della cella <code>[r,c]</code> sono le celle
+      <code>[r-1, c-1]</code>, <code>[r-1, c]</code>, <code>[r-1,
+	c+1]</code>, <code>[r, c-1]</code>, <code>[r,
+	c+1]</code>, <code>[r+1, c-1]</code>, <code>[r+1, c]</code>
+	e <code>[r+1, c+1]</code>.  Se una cella si trova sul bordo, i
+	"vicini" di una cella non includono elementi fuori della
+	matrice.</p>
+    </p>
+
+    <h3>Esempio</h3>
+    <p>Data una struttura <code>Mat src</code> contenente la seguente
+      matrice <code>5x5</code>:</p>
+	<pre>
+3  4  3  3  4  2 
+4  4  1  0 -3  3 
+3 -4  1 -2  1 -2 	
+	</pre>
+    <p>e data una struttura <code>Mat dest</code> contenente una matrice
+      della stessa dimensione di <code>src</code>, richiamando la seguente
+      linea di codice:</p>
+    <p><code>matrix_compute_neighboor_sub(&amp;dest, &amp;src);</code></p>
+    <p>si ottiene il seguente effetto su <code>dest</code>:</p>
+    <pre>
+-9 -11 -9 -2  -1 -2 
+-6 -11 -8 -8 -12  1 
+-1 -17  2 -2   5 -3 
+    </pre>
+    <hr>
+
+    <p><br></p>
+
+    <h2>Esercizio 2</h2>
+    <p>Sia data una lista i cui elementi appartengono alla seguente
+      struttura <code>ListNode</code>:</p>
+    <p><code>
+	typedef struct ListNode {<br>
+	&nbsp;&nbsp;int value;<br>
+	&nbsp;&nbsp;struct ListNode* next;<br>
+	} ListNode;
+    </code></p>
+    <p>Si realizzi la funzione C:</p>
+    <p><code>ListNode* merge_elements(ListNode* l1, ListNode* l2)</code></p>
+    <p>che date due liste <code>l1</code>
+      e <code>l2</code> <strong>ordinate</strong> in senso crescente
+      in base al campo <code>value</code>, restituisca in output una
+      nuova lista. Tale lista deve contenere tutti gli elementi
+      di <code>l1</code> ed <code>l2</code>, ed essere anche
+      essa <strong>ordinata</strong> in senso crescente in base al
+      campo <code>value</code>.
+
+      <h3>Esempio</h3>
+    <p>Data la seguente lista <code>l1</code>:</p>
+    <p><code>
+-13 -> 0 -> 16 -> 27 -> 29 
+    </code></p>
+    <p>e data la lista <code>l2</code>:</p>
+    <p><code>
+3 -> 4 -> 23
+    </code></p>
+    <p>Richiamando la seguente linea di codice:</p>
+    <p><code>ListNode* l_merge = merge_elements(&amp;l1, &amp;l2)</code></p>
+    <p><code>l_mrge</code> dovr&agrave; contenere:</p>
+    <p><code>
+-13 -> 0 -> 3 -> 4 -> 16 -> 23 -> 27 -> 29
+    </code></p>
+    <hr>
+
+    <p><br></p>
+
+    <h2>Esercizio 3</h2>
+    <p>Con riferimento alla struttura collegata lineare descritta di
+      seguito:</p>
+    <p><code>
+	typedef struct ListNode {<br>
+	&nbsp;&nbsp;int value;<br>
+	&nbsp;&nbsp;struct ListNode* next;<br>
+	} ListNode;
+    </code></p>
+    <p>implementare la seguente funzione <strong>ricorsiva</strong> C
+      (nessuna istruzione di ciclo &egrave; permessa):</p>
+    <p><code>ListNode* list_multipliers(ListNode* src, int n);</code></p>
+    <p>che data una lista <code>src</code> restituisca una nuova lista
+    contenente gli elementi di <code>src</code> che sono multipli
+    di <code>n</code>.</p>
+
+    <h3>Esempio</h3>
+    <p>Data la seguente lista <code>src</code>:</p>
+    <p><code>
+-9 -> 9 -> -6 -> 7 -> 8 -> -6 -> 5 -> 0 -> 3 -> -4 
+    </code></p>
+
+    <p>Richiamando la seguente linea di codice:</p>
+    <p><code>ListNode* l_int = list_multipliers(&amp;src, 4);</code></p>
+    <p><code>l_int</code> dovr&agrave; contenere:</p>
+    <p><code>
+8 -> 0 -> -4
+    </code></p>
+    <hr>
+
+    <p><br></p>
+
+    <h1><a title="Download Esame" href="20160617.tgz">Download Esame</a></h1>
+
+  </div>
+</body>
+</html>

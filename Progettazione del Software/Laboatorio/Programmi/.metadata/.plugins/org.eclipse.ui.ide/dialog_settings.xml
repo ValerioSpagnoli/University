@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="ResourceNavigator">
+		<item key="ResourceViewer.STORE_SORT_TYPE" value="1"/>
+		<item key="ResourceWorkingSetFilter.STORE_WORKING_SET" value="Aggregate for window 1602279813694"/>
+	</section>
+	<section name="NewWizardAction">
+		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.eclipse.jdt.ui.wizards.JavaProjectWizard"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.jdt.ui.java"/>
+		</list>
+	</section>
+	<section name="SmartImportWizard">
+		<item key="SmartImportRootWizardPage.STORE_HIDE_ALREADY_OPEN" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_CLOSE_IMPORTED" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
+		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
+	</section>
+</section>

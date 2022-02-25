@@ -1,0 +1,27 @@
+package figureGeometriche;
+
+public class Triangolo extends FiguraGeometrica{
+	
+	//proprietà
+	private final double l1;
+	private final double l2;
+	private final double l3;
+	
+	public triangolo(double a, double b, double c) {
+		this.l1 = a;
+		this.l2 = b;
+		this.l3 = c;
+	}
+	
+	public double getLatoUno() {
+		return l1;
+	}
+	public double getLatoDue() {
+		return l2;
+	}
+	public double getLatoTre() {
+		return l3;
+	}
+	
+	
+}

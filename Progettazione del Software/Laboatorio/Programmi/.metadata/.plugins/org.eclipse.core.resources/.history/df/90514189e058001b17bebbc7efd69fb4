@@ -1,0 +1,52 @@
+package client;
+public class Character implements Comparable<Character> {
+
+	private String name;
+	private String surname;
+	private String casata;
+	private String role; //M or S --> M = main character | S = secondary character
+
+	public Character(String name, String surname, String casata, String role) {
+		this.name = name;
+		this.surname = surname;
+		this.casata = casata;
+		this.role = role;
+	}
+
+	public String getName() {
+		return name;
+	}
+	
+	public String getSurname() {
+		return surname;
+	}
+
+	public String getCasata() {
+		return casata;
+	}
+	
+	public String getRole() {
+		return role;
+	}
+
+
+	@Override
+	public int compareTo(Character c) {
+		if(c.getRole().equals("M") && this.getRole().equals("S")) { //c è M e this è S
+			
+		}
+		else if(c.getRole().equals("S") && this.getRole().equals("M")) { //c è S e this è M
+			
+		}
+		else { //hanno lo stesso ruolo
+			
+		}
+	}
+
+	@Override
+	public String toString() {
+		return getName() + " "+ getSurname() + " - "+getRole();
+	}
+
+	
+}

@@ -1,0 +1,40 @@
+package lista;
+
+
+import java.util.*;
+
+public class MiaLista<E> implements List<E>, Cloneable {
+	private Object[] element;
+	int size;
+	
+	public MiaLista() {
+		element = new Object[13];
+		size = 0;	
+	}
+	
+	boolean add(int index, E element) {
+		
+	}
+	
+	boolean remove(int index) {
+		
+	}
+	
+	void clear() {
+		
+	}
+	
+	E get(int index) {
+		
+	}
+	
+	E set(int index, E element) {
+		
+	}
+	
+	int indexOf(Object o) {
+		
+	}
+
+	
+}

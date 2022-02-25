@@ -1,0 +1,8 @@
+package esercizio_2;
+
+public class Esercizio_2 {
+	
+	public static double[][] differenzaVicini(){
+		
+	}
+}

@@ -1,0 +1,213 @@
+package client;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Downloader implements Runnable{
+	
+	private Frame frame;
+	private Scanner scanner;
+	private boolean running = false;
+	
+	Character[] stark = new Character[100];
+	Character[] targaryen = new Character[100];
+	Character[] lannister = new Character[100];
+	
+	public Downloader(Frame frame, Scanner scanner) {
+		this.frame = frame;
+		this.scanner = scanner;
+	}
+	
+	public void run() {
+		if(!running) {
+			running = true;
+			
+			for(int i = 0; i<100; i++) {
+				stark[i] = null;
+				targaryen[i] = null;
+				lannister[i] = null;
+			}
+			
+			while(running) {
+				String stringa = scanner.nextLine();
+				
+				if(stringa.equals("end")) {
+					running = false;
+				}
+				else {
+					String[] dati = stringa.split(",");
+					String nome = dati[0];
+					String cognome = dati[1];
+					String casata = dati[2];
+					String ruolo = dati[3];
+					
+					if(casata.equals("STARK")) {
+						Character c = new Character(nome, cognome, casata, ruolo);
+						String testo;
+						if(stark[0] == null) {
+							stark[0] = c;
+							testo = c.toString() + "\n";
+						}
+						else {
+							int compare;
+							int i = 0;
+							boolean inserito = false;
+							boolean doppione = false;
+							String doppioneRicevuto = "";
+							
+							while(!(stark[i] == null) && !inserito) {
+								compare = stark[i].compareTo(c);
+								if(compare<0) {
+									i++;
+								}
+								else if(compare>0) {
+									Character[] aus = Arrays.copyOf(stark, stark.length);
+									for(int k = stark.length-1; k>i; k--) {
+										aus[k] = aus[k-1];
+									}
+									for(int j = 0; j<100; j++) {
+										 stark[j] = aus[j];
+									}
+									stark[i] = c;
+									inserito = true;
+								}
+								else if(compare == 0) {
+									doppione = true;
+								}
+							}
+							if(!inserito) {
+								if(!doppione) {
+									stark[i] = c;
+								}
+								else {
+									doppioneRicevuto = "DOPPIONE RICEVUTO";
+								}
+							}
+							
+							testo = "";
+							for(int j = 0; j<100 && !(stark[j]==null) ; j++) {
+								testo = testo + stark[j].toString() + "\n";
+							}
+							if(doppione) {
+								testo = "\n" + testo + doppioneRicevuto;
+							}
+						}	
+						frame.starkText.setText(testo);
+					}
+					
+					else if(casata.equals("TARGARYEN")) {
+						Character c = new Character(nome, cognome, casata, ruolo);
+						String testo;
+						if(targaryen[0] == null) {
+							targaryen[0] = c;
+							testo = c.toString() + "\n";
+						}
+						else {
+							int compare;
+							int i = 0;
+							boolean inserito = false;
+							boolean doppione = false;
+							String doppioneRicevuto = "";
+							
+							while(!(targaryen[i] == null) && !inserito) {
+								compare = targaryen[i].compareTo(c);
+								if(compare<0) {
+									i++;
+								}
+								else if(compare>0) {
+									Character[] aus = Arrays.copyOf(targaryen, targaryen.length);
+									for(int k = targaryen.length-1; k>i; k--) {
+										aus[k] = aus[k-1];
+									}
+									for(int j = 0; j<100; j++) {
+										 targaryen[j] = aus[j];
+									}
+									targaryen[i] = c;
+									inserito = true;
+								}
+								else if(compare == 0) {
+									doppione = true;
+								}
+							}
+							if(!inserito) {
+								if(!doppione) {
+									targaryen[i] = c;
+								}
+								else {
+									doppioneRicevuto = "DOPPIONE RICEVUTO";
+								}
+							}
+							
+							testo = "";
+							for(int j = 0; j<100 && !(targaryen[j]==null); j++) {
+								testo = testo + targaryen[j].toString() + "\n";
+							}
+							if(doppione) {
+								testo = "\n" + testo + doppioneRicevuto;
+							}
+						}
+						frame.targaryenText.setText(testo);
+					}
+					
+					else if(casata.equals("LANNISTER")) {
+						Character c = new Character(nome, cognome, casata, ruolo);
+						String testo;
+						if(lannister[0] == null) {
+							lannister[0] = c;
+							testo = c.toString() + "\n";
+						}
+						else {
+							int compare;
+							int i = 0;
+							boolean inserito = false;
+							boolean doppione = false;
+							String doppioneRicevuto = "";
+							
+							while(!(lannister[i] == null) && !inserito) {
+								compare = lannister[i].compareTo(c);
+								if(compare<0) {
+									i++;
+								}
+								else if(compare>0) {
+									Character[] aus = Arrays.copyOf(lannister, lannister.length);
+									for(int k = lannister.length-1; k>i; k--) {
+										aus[k] = aus[k-1];
+									}
+									for(int j = 0; j<100; j++) {
+										 lannister[j] = aus[j];
+									}
+									lannister[i] = c;
+									inserito = true;
+								}
+								else if(compare == 0) {
+									doppione = true;
+								}
+							}
+							if(!inserito) {
+								if(!doppione) {
+									lannister[i] = c;
+								}
+								else {
+									doppioneRicevuto = "DOPPIONE RICEVUTO";
+								}
+							}
+							
+							testo = "";
+							for(int j = 0; j<100 && !(lannister[j]==null); j++) {
+								testo = testo + lannister[j].toString() + "\n";
+							}
+							if(doppione) {
+								testo = "\n" + testo + doppioneRicevuto;
+							}
+						}
+						frame.lannisterText.setText(testo);
+					}	
+				}
+			}
+			frame.setButtons(true,false);
+		}
+	}
+	
+
+
+}

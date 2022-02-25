@@ -1,0 +1,17 @@
+package insegnante;
+import scuola.Scuola;
+
+public class Insegnante {
+	
+	//campi dati
+	private final String nome, cognome, annoVincitaConcorso;
+	private Scuola scuolaAppartenenza;
+	
+	//costruttore
+	public Insegnante(String nome, String cognome, String annoVincitaConcorso, Scuola scuolaAppartenenza) {
+		this.nome = nome;
+		this.cognome = cognome;
+		this.annoVincitaConcorso = annoVincitaConcorso;
+		this.scuolaAppartenenza = scuolaAppartenenza;
+	}
+}

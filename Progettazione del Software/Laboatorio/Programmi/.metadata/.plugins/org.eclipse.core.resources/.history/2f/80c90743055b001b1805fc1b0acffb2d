@@ -1,0 +1,42 @@
+package client;
+
+import java.util.Scanner;
+
+public class Downloader implements Runnable{
+
+	private Frame frame;
+	private Scanner scanner;
+	private boolean running;
+	
+	public Downloader(Frame frame, Scanner scanner) {
+		this.frame = frame;
+		this.scanner = scanner;
+		running = false;
+	}
+	
+	@Override
+	public void run() {
+		if(!running) {
+			running = true;
+			while(running) {
+				String stringa = scanner.nextLine();
+				if(stringa.equals("+")) {
+					running = false;
+					frame.setButtons(true, false);
+				}
+				else {
+					String numeroEstratto = stringa;
+					int numero = Integer.parseInt(numeroEstratto);
+					for(int i = 0; i<3; i++) {
+						for(int j = 0; j<5; i++) {
+							if(frame.cartellaGrid[i][j].getValue() == numero) {
+								
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+}

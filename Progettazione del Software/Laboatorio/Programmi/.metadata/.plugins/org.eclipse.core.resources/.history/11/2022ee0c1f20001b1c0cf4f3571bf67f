@@ -1,0 +1,42 @@
+package display;
+
+import java.awt.*;
+import javax.swing.*;
+
+
+public class Display extends JFrame{
+	
+	final BorderLayout bordeLayout = new BorderLayout();
+	
+	//pannello centro
+	final JPanel centroPanel = new JPanel();
+	final GridLayout centroGridLayout = new GridLayout(2,2);
+	final JTextArea matricola = new JTextArea(1, 10);
+	final JTextArea IPaddress = new JTextArea(1, 10);
+	final JTextArea porta = new JTextArea (1, 10);
+	
+	//pannello sud
+	final JPanel sudPanel = new JPanel();
+	final FlowLayout centroFlowLayout = new FlowLayout();
+	final JButton connect = new JButton("Connect");
+	final JButton disconnect = new JButton("Disconnect");
+	final JButton start = new JButton("Start");
+	final JButton stop = new JButton("Stop");
+	
+	final Listener ascoltatore = new Listener(this);
+	
+	public Display(){
+		super ("Connection App");
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

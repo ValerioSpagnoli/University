@@ -1,0 +1,25 @@
+package client;
+
+import java.util.Scanner;
+
+public class Downloader implements Runnable{
+
+	private Frame frame;
+	private Scanner scanner;
+	private boolean running;
+	
+	public Downloader(Frame frame, Scanner scanner) {
+		this.frame = frame;
+		this.scanner = scanner;
+		running = false;
+	}
+	
+	
+	
+	
+	@Override
+	public void run() {
+		
+	}
+
+}

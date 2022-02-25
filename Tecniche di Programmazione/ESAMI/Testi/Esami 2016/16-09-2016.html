@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="content-type">
+  <title>Esame di Tecniche di Programmazione del 16/09/2016</title>
+  <style>
+    img {
+    margin: 15px;
+    }
+    
+    .maxwidth {
+    font-family: Verdana, Geneva, sans-serif;
+    max-width: 1000px;
+    margin: auto;
+    position: absolute;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%);
+    }
+    
+    hr {
+    border: 1px solid;
+    color: gray;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="maxwidth">
+    
+    <h1>Esame di Tecniche di Programmazione del 16/09/2016</h1>
+    <hr>
+
+    <h3>Istruzioni per lo svolgimento della prova:</h3>
+    <ul>
+      <li>Scaricare il compito digitando in un terminale il comando
+	<strong><code>TDP_download_compito.bash</code></strong>.</li>
+      <li>Inserire i propri dati personali (<strong>matricola, nome e
+	  cognome</strong>) nella GUI, quindi salvare e chiudere la
+	GUI.</li>
+      <li>All'esercizio i &egrave; associata la
+	directory <code>esercizio{i}</code>, contenente i file necessari
+	allo svolgimento dell'esercizio. Ciascun esercizio deve essere
+	svolto modificando esclusivamente il file <code>esercizio{i}.h
+	</code> (se necessario) ed <code>esercizio{i}.c</code> presenti
+	nella directory corrispondente. Nessun file per qualsiasi motivo
+	deve essere spostato dalla directory in cui si trova. Nessun altro
+	file deve essere modificato. Non devono essere creati ulteriori
+	file.</li>
+      <li>Il file contenente il programma principale di ciascun esercizio
+	&egrave; <code> test_esercizio{i}.c</code>. Tale file deve essere
+	compilato usando il <code> Makefile</code> fornito nella directory,
+	ed il corrispondente eseguibile (<code> test_esercizio{i}</code>)
+	lanciato per eseguire i test di correttezza e conoscerne l'esito. Il
+	file <code>test_esercizio{i}.c</code> non deve essere modificato per
+	alcun motivo.</li>
+      <li>Alla fine del tempo concesso per svolgere l' esame o, se lo
+	avete terminato prima dello scadere del tempo, dovete eseguire
+	lo <strong>script di consegna dell' esame</strong>. <strong>La
+	  consegna pu&ograve; essere effettuata una ed una volta sola</strong>, per
+	cui consegnate solo quando siete sicuri di volerlo fare. Per
+	consegnare il compito dovete digitare sul terminale il
+	comando <strong><code>TDP_upload_compito.bash</code></strong>. Una volta
+	avviato lo script di consegna controllate che sia andato tutto a
+	buon fine <strong>verificando</strong> che sul terminale venga
+	stampato un output simile al seguente:<br>
+      <code>local:
+  	  matricola_cognome_nome_hostname.tar.gz remote: 
+	  uploads/matricola_cognome_nome_hostname.tar.gz<br>
+	  &nbsp;&nbsp;200 PORT command successful. Consider using PASV.<br>
+	  &nbsp;&nbsp;150 Ok to send data.<br>
+	  &nbsp;&nbsp;226 Transfer complete. 4886 bytes sent in 0.00 secs (113606.8 kB/s)<br>
+	  &nbsp;&nbsp;221 Goodbye.</code></li>
+      <li>Verranno corretti esclusivamente gli esercizi la cui
+  	compilazione dia esito positivo. In caso contrario
+  	verr&agrave; assegnato un punteggio nullo. Se non verr&agrave;
+  	eseguito lo script di consegna dell' esame esso non
+  	verr&agrave; corretto (&egrave; equivalente a non aver
+  	consegnato il compito a fine esame).</li>
+      <li>Per eventuali problemi o dubbi, chiedere al docente.</li>
+    </ul>
+    <hr>
+
+    <p><br></p>
+
+    <h2>Esercizio 1</h2>
+    <p>Sia data la seguente struttura <code>Mat:</code></p>
+<p><code>
+typedef struct Mat {<br>
+&nbsp;&nbsp;int cols; // numero di colonne<br>
+&nbsp;&nbsp;int rows; // numero di righe<br>
+&nbsp;&nbsp;int** row_ptrs; // puntatori alle righe<br>
+} Mat;
+</code></p>
+<p>Implementare la seguente funzione C:</p>
+<p><code>int matrix_block_sum(Mat* dest, Mat* src, int start_row, int start_col);</code></p>
+<p>che dati in input:
+<ul>
+  <li>puntatore ad una matrice <code>dest</code></li>
+  <li>puntatore ad una matrice <code>src</code></li>
+  <li>un intero che specifica il numero di riga <code>start_row</code></li>
+  <li>un intero che specifica il numero di colonna <code>start_col</code></li>
+</ul>
+sommi gli elementi di <code>dest</code> con quelli di <code>src</code>, nel sottoblocco di 
+dimensione <code>src->rows x src->cols</code> che inizia dalla riga <code>start_row</code> 
+dalla colonna <code>start_col</code>. Se l'operazione non e' possibile perche' il sottoblocco 
+in cui effettuare la somma eccede i limiti della  matrice di destinazione, la funzione ritorna <code>0</code>. 
+In caso contrario la funzione  ritorna il numero di elementi sommati (ovvero il numero di 
+elementi di <code>src</code>).
+
+<h3>Esempio</h3>
+    <p>Data una struttura <code>Mat dest</code> contenente la seguente immagine <code>8x8</code>:</p>
+    <p><code>
+	1 2 3 1 3 3 2 1<br>
+	2 3 1 3 3 2 1 0<br>
+	1 3 3 2 1 2 1 1<br>
+	1 2 3 1 3 3 2 1<br>
+	1 3 3 2 1 2 1 1<br>
+	1 2 3 1 3 3 2 1<br>
+	2 3 1 2 2 1 2 1<br>
+	2 3 1 3 3 2 1 0
+    </code></p>
+    <p>Data una struttura <code>Mat src</code> contenente la seguente matrice <code>3x3</code>:<p>
+    <p><code>
+	5 4 7<br>
+	4 4 4<br>
+	6 4 6
+    </code></p>
+    <p>Richiamando la seguente linea di codice:</p>
+    <p><code>matrix_block_sum(dest, src, 2, 2);</code></p>
+    <p>si ottiene il seguente effetto su <code>dest</code>:</p>
+    <p><code>
+	1 2 3 1 3 3 2 1<br>
+	2 3 1 3 3 2 1 0<br>
+	1 3 <strong><span style="color:blue">8 6 8</span></strong> 2 1 1<br>
+	1 2 <strong><span style="color:blue">7 5 7</span></strong> 3 2 1<br>
+	1 3 <strong><span style="color:blue">9 6 7</span></strong> 2 1 1<br>
+	2 3 1 2 2 1 2 1<br>
+	1 2 3 1 3 3 2 1<br>
+	2 3 1 3 3 2 1 0
+    </code></p>
+    <p>e la funzione ritorna <code>9</code>.</p>
+    <p>Invocando invece:</p>
+    <p><code>matrix_block_sum(dest, src, 6, 6);</code></p>
+    <p><code>dest</code> rimane immutata, e la funzione ritorna <code>0</code>. L'operazione di 
+      copia infatti eccederebbe i limiti della matrice.</p>
+    <p><code>
+	1 2 3 1 3 3 2 1<br>
+	2 3 1 3 3 2 1 0<br>
+	1 3 3 2 1 2 1 1<br>
+	1 2 3 1 3 3 2 1<br>
+	1 3 3 2 1 2 1 1<br>
+	2 3 1 2 2 1 2 1<br>
+	1 2 3 1 3 3 <strong><span style="color:red">7 5 ?</span></strong><br>
+	2 3 1 3 3 2 <strong><span style="color:red">5 4 ?</span></strong><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><span style="color:red">? ? ?</span></strong>
+    </code></p>
+    <hr>
+
+    <p><br></p>
+
+    <h2>Esercizio 2</h2>
+    <p>Sia data una lista i cui elementi appartengono alla seguente struttura <code>NodoSCL</code>:<br>
+      <br>
+      <code>struct ListNode {<br>
+        &nbsp; int value;<br>
+        &nbsp; struct NodoSCL* next;<br>
+        };</code></p>
+    <p>Si realizzi la funzione</p>
+    <ul>
+      <li><code>ListNode* lowerValues(Mat* m,
+          int value);</code></li>
+    </ul>
+    <p>che, dato il puntatore ad una matrice <code>m</code>
+      definita come nell' esercizio precedente, ed un valore intero <code>v</code>,
+      restituisce una lista in cui ciascun elemento contiene il valore di un elemento di <code>m</code>
+      che ha valore strettamente minore di <code>v</code>.      Si noti che gli elementi contenuti nella lista devono essere ordinati per
+      numero di riga e per numero di colonna (nell' ordine ottenuto con una
+      scansione della matrice per righe).</p>
+    <h3>Esempio</h3>
+    <p>Data una struttura <code>Mat m</code>
+      che rappresenta la seguente matrice <code>2x3</code>:<code><br>
+      </code></p>
+    <p><code>3 1 2 <br>
+        1 3 4<br>
+      </code><br>
+      l' esecuzione della istruzione seguente<br>
+      <br>
+      <code>ListNode* l = lowerValues(m, 3)</code>;<br>
+      <br>
+      dovr&agrave; assegnare alla variabile <code>l</code>
+      il puntatore alla lista:<br>
+      <br>
+      <code>1 -&gt; 2 -&gt; 1</code><br></p>
+    <hr>
+    
+    <p><br></p>
+
+    <h2>Esercizio 3</h2>
+    <p>Con riferimento alla struttura collegata lineare descritta di
+      seguito:</p>
+    <p><code>
+	typedef struct ListNode {<br>
+	&nbsp;&nbsp;int value;<br>
+	&nbsp;&nbsp;struct ListNode* next;<br>
+	} ListNode;
+    </code></p>
+    <p>implementare la seguente funzione <strong>ricorsiva</strong> C
+      (nessuna istruzione di ciclo &egrave; permessa):</p>
+    <p><code>ListNode* compute_derivative(int* v, int size);</code></p>
+    <p>che dato in input un array di interi <code>v</code> di
+    dimensione <code>size</code>, restituisca una lista in cui
+    l'elemento in posizione <code>i</code> contiene la differenza
+    tra <code>v[i+1]</code> e <code>v[i]</code>.</p>
+    <p>La lista avr&agrave; dimensione <code>size - 1</code>
+      poich&egrave; se l'array ha meno di due elementi non e'
+      possibile calcolare la differenza. Nel caso in
+      cui <code>size</code> &egrave; minore di <code>2</code> la
+      funzione ritorna il valore <code>NULL</code>.</p>
+
+    <h3>Esempio</h3>
+    <p>Dato il seguente array di interi <code>v</code>:</p>
+    <p><code>
+7 6 -5 5 5 -4 4 4 -7
+    </code></p>
+
+    <p>Richiamando la seguente linea di codice:</p>
+    <p><code>ListNode* l_d = compute_derivative(v, 9);</code></p>
+    <p><code>l_d</code> dovr&agrave; contenere:</p>
+    <p><code>
+-1 -> -11 -> 10 -> 0 -> -9 -> 8 -> 0 -> -11
+    </code></p>
+    <hr>
+
+    <p><br></p>
+
+  </div>
+</body>
+</html>

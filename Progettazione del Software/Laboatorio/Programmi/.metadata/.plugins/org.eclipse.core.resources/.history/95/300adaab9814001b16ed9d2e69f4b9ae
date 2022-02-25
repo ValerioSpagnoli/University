@@ -1,0 +1,18 @@
+package esercizio_3;
+
+import java.util.*;
+
+public class Esercizio_3 {
+	
+	public static void main(String[] args) {
+		int r, c;
+		Scanner scan = new Scanner(System.in);
+		String line = scan.nextLine();
+		StringTokenizer tk = new StringTokenizer (line, ",");
+		
+		r = Integer.parseInt(tk.nextToken()());
+		c = Integer.parseInt(tk.nextToken()());
+		
+	}
+
+}

@@ -1,0 +1,12 @@
+package main;
+import scuola.Scuola;
+import insegnante.Insegnante;
+import classe.Classe;
+
+public class Main {
+	public static void main(String[] args) {
+		Scuola scuola1 = new Scuola("ISIS Enrico Mattei", "Via Paolo Borsellino, Cerveteri", "Roma");;
+		Insegnante insegnante1 = new Insegnante("Danilo", "Iavarone", 1995, scuola1);
+		
+	}
+}

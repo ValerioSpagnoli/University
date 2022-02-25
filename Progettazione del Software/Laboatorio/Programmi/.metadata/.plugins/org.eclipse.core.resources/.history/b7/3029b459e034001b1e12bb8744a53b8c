@@ -1,0 +1,94 @@
+package client;
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.*;
+import java.util.logging.*;
+
+public class FrameClient extends JFrame{
+	
+	JFrame frame = new JFrame();
+	
+	final BorderLayout borderLayout = new BorderLayout();
+	
+	//northPanel
+	final JPanel northPanel = new JPanel();
+	final FlowLayout northLayout = new FlowLayout();
+	final JLabel client = new JLabel("CLIENT APP");
+	
+	//centerPanel 
+	final JPanel centerPanel = new JPanel();
+	final GridLayout centerLayout = new GridLayout(4,2);
+	final JLabel server = new JLabel("Server");
+	final JLabel port = new JLabel("Port");
+	final JTextField serverText = new JTextField(12);
+	final JTextField portText = new JTextField(12);
+	final JButton connect = new JButton("Connect");
+	final JButton disconnect = new JButton("Disconnect");
+	
+	//southPanel 
+	final JPanel southPanel = new JPanel();
+	final GridLayout southLayout = new GridLayout(3,1);
+	final JLabel space = new JLabel();
+	final JLabel message = new JLabel("Message");
+	final JTextField messageText = new JTextField(15);
+	
+	
+	
+	//Listener
+	ListenerClient listener = new ListenerClient(this);
+	
+	public FrameClient() {
+		Container contentPane = frame.getContentPane();
+		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		contentPane.setLayout(borderLayout);
+		
+		//costruzione northPanel
+		northPanel.setLayout(northLayout);
+		northPanel.add(client);
+		
+		//costruzione centerPanel
+		centerPanel.setLayout(centerLayout);
+		centerPanel.add(server);
+		centerPanel.add(port);
+		centerPanel.add(serverText);
+		centerPanel.add(portText);
+		centerPanel.add(space);
+		centerPanel.add(space);
+		centerPanel.add(connect);
+		centerPanel.add(disconnect);
+		
+		//costruzione southPanel
+		southPanel.setLayout(southLayout);
+		southPanel.add(space);
+		southPanel.add(message);
+		southPanel.add(messageText);
+		
+		//costruzione contentPane
+		contentPane.add(northPanel, BorderLayout.NORTH);
+		contentPane.add(centerPanel, BorderLayout.CENTER);
+		contentPane.add(southPanel, BorderLayout.SOUTH);
+		
+		//impostazioni grafiche
+		frame.pack();
+		frame.setLocationRelativeTo(null);
+		frame.setVisible(true);
+		
+		//listener
+		connect.setActionCommand("connect");
+		connect.addActionListener(listener);
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

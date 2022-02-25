@@ -1,0 +1,30 @@
+package client;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class Frame extends JFrame{
+
+	JFrame frame = new JFrame();
+	BorderLayout frameLayout = new BorderLayout();
+	
+	//northPanel
+	JPanel northPanel = new JPanel();
+	JLabel ipAddressLabel = new JLabel("Server Address");
+	JLabel portLabel = new JLabel("Port");
+	JTextField ipAddressText = new JTextField("127.0.0.1");
+	JTextField portText = new JTextField(4400);
+	JButton connectBtn = new JButton("Connect");
+	JButton disconnectBtn = new JButton("Disonnect");
+	
+	
+	//centerPanel
+	
+	//southPanel
+	JPanel southPanel = new JPanel();
+	JLabel commandLabel = new JLabel("Command");
+	JTextField commandText = new JTextField(20);
+	JButton executeBtn = new JButton("Execute");
+	JButton interruptBtn = new JButton("Interrupt");
+	
+}

@@ -1,0 +1,86 @@
+package client;
+
+import java.awt.*;
+import javax.swing.*;
+
+public class Frame extends JFrame{
+	
+	JFrame frame = new JFrame();
+	BorderLayout frameLayout = new BorderLayout();
+	
+	//north
+	JPanel northPanel = new JPanel();
+	JPanel panel1 = new JPanel();
+	JPanel panel2 = new JPanel();
+	GridLayout northLayout = new GridLayout(2,1);
+	GridLayout panel2Layout = new GridLayout(1,3);
+	JLabel ipAddressLabel = new JLabel("IP Address");
+	JLabel portLabel = new JLabel("Port");
+	JTextField ipAddressText = new JTextField(10);
+	JTextField portText = new JTextField(10);
+	JButton connectBtn = new JButton("Connect");
+	JButton disconnectBtn = new JButton("Disconnect");
+	JButton starkButton = new JButton("STARK");
+	JButton targaryenBtn = new JButton("TARGARYEN");
+	JButton lannisterBtn = new JButton("LANNISTER");
+	
+	//center
+	JPanel centerPanel = new JPanel();
+	GridLayout centerLayout = new GridLayout(1,3);
+	JTextArea starkText = new JTextArea(20,15);
+	JTextArea targaryenText = new JTextArea(20,15);
+	JTextArea lannisterText = new JTextArea(20,15);
+	
+	//south
+	JPanel southPanel = new JPanel();
+	JButton downloadBtn = new JButton("Download");
+	JButton interrompiBtn = new JButton("Interrompi");
+	
+	public Frame() {
+		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		frame.setLayout(frameLayout);
+		frame.setTitle("Valerio Spagnoli 1887715");
+		Container contentPane = frame.getContentPane();
+		
+		//north
+		northPanel.setLayout(northLayout);
+		
+		panel1.add(ipAddressLabel);
+		panel1.add(ipAddressText);
+		panel1.add(portLabel);
+		panel1.add(portText);
+		panel1.add(connectBtn);
+		panel1.add(disconnectBtn);
+		
+		panel2.setLayout(panel2Layout);
+		panel2.add(starkButton);
+		panel2.add(targaryenBtn);
+		panel2.add(lannisterBtn);
+		
+		northPanel.add(panel1);
+		northPanel.add(panel2);
+		
+		//center
+		centerPanel.setLayout(centerLayout);
+		centerPanel.add(starkText);
+		centerPanel.add(targaryenText);
+		centerPanel.add(lannisterText);
+		
+		
+		//south
+		southPanel.add(downloadBtn);
+		southPanel.add(interrompiBtn);
+		
+		//contentPane
+		contentPane.add(northPanel, BorderLayout.NORTH);
+		contentPane.add(centerPanel, BorderLayout.CENTER);
+		contentPane.add(southPanel, BorderLayout.SOUTH);
+		
+		//settings
+		frame.setVisible(true);
+		frame.setLocationRelativeTo(null);
+		frame.pack();
+	}
+	
+	
+}

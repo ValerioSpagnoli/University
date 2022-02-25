@@ -1,0 +1,23 @@
+package sistemaBancario;
+
+public abstract class ContoCorrente implements Comparable <ContoCorrente> {
+	
+	public int compareTo(ContoCorrente c) {
+		if(this.saldo > c.getSaldo()) { return 1; }
+		else if(this.saldo == c.getSaldo()) {return 0;}
+		else {return -1;}
+	}
+	
+	public String toString() {
+		return this.codice + " di " + this.nomeProprietario + " " + this.cognomeProprietario + "con saldo " + this.getSaldo() + " €.\n";
+	}
+	
+	public ContoCorrente(String codiceConto, int saldoIniziale) {
+		codice = codiceConto;
+		saldo = saldoIniziale
+	}
+	
+	
+	
+	
+}

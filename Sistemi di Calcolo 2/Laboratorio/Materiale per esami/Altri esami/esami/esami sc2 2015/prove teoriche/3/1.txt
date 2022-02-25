@@ -1,0 +1,28 @@
+La funzione compare_and_swap è implementata nel seguente modo;
+
+
+Int compare_and_swap(int *reg, int oldval, int newval){
+	int reg_old_val = *Reg;
+	if(reg_old_val == oldval) *reg = newval;
+	return reg_old_val;
+}
+
+Quindi questa funzione confronta il valore all'interno di un registro e, se questo valore è uguale al valore oldval, lo sostituisce con il valore newval e ritorna il vecchio valore, altrimenti ritorna (se il valore del registro non è uguale a oldval) ritorna direttamente il valore del registro.
+
+Questa funzione può essere usata per implementare mutua esclusione nel seguente modo:
+
+Int blot = 0;
+Int procedure(){
+	while(compare_and_swap(&bolt, 0, 1));
+	/*CS*/
+	bolt = 0;
+}
+
+Dove bolt è una variabile globale visibile a tutti i processi, che viene inizializzata a 0.
+Quindi il primo processo chiama la compare_and_swap con bolt = 0, oldval = 0 e newval = 1, quindi sostituisce il valore di bolt con 1 e ritorna 0. Di conseguenza esce dal while e va in CS.
+Tutti i processi che arrivano dopo però faranno il confronto con bolt = 1, oldval = 0 e newval = 0, quindi la compare_and_swap non cambierà il valore di bolt e restituirà 1, facendo bloccare i processi sul while.
+Quando il primo processo uscirà dalla CS e metterà bolt = 0, sbloccherà uno dei processi che poi farà lo stesso.
+
+I vantaggi di questo approccio sono che è facile da implementare, è necessaria poca memoria, è applicabile ad un numero qualsiasi di processi e di sezioni critiche, dove ogni sezione critica può essere identificata dalla sua variabile.
+
+Gli svantaggi stanno nel fatto che generano busy waiting, ovvero mentre un processo è bloccato sul while non fa alcun lavoro utile, ma spreca tempo/risorse alla CPU. Inoltre può esserci starvation.

@@ -1,0 +1,5 @@
+file = open('fileCopia', 'w', encoding = 'utf-8')
+es = open('A_Ex5.py', 'r', encoding = 'utf-8')
+esercizio = es.read()
+file.write(esercizio)
+file.close()

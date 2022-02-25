@@ -1,0 +1,85 @@
+package frame;
+
+import java.awt.event.*;
+import javax.swing.*;
+
+public class Listener implements ActionListener{
+	public final static String SOMMA = "Somma";
+	public final static String DIFFERENZA = "Differenza";
+	public final static String MOLTIPLICAZIONE = "Moltiplicazione";
+	public final static String DIVISIONE = "Divisione";
+	public final static String UGUALE = "Uguale";
+	public final static String DELETE = "Delete";
+	public final static String PUNTO = "Punto";
+		
+	private Frame display;
+	
+	private String Tinserito = "";
+	
+	public Listener(Frame displayA) {
+		this.display = displayA;
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		
+		int risultato = 0;
+		String operazione = "";
+		int i = 0;
+		
+		if(e.getActionCommand().equals(SOMMA)) {
+			Tinserito = Tinserito + " + ";
+			display.schermo.setText(Tinserito);
+			operazione = "+";
+
+		}
+		else if(e.getActionCommand().equals(DIFFERENZA)) {
+			
+		}
+		else if(e.getActionCommand().equals(MOLTIPLICAZIONE)) {
+			
+		}
+		else if(e.getActionCommand().equals(DIVISIONE)) {
+	
+		}
+		else if(e.getActionCommand().equals(PUNTO)) {
+			
+		}
+		else if(e.getActionCommand().equals(UGUALE)) {
+			Tinserito = Tinserito + " = " + risultato;
+			display.schermo.setText(Tinserito);
+	
+			}
+		else if(e.getActionCommand().equals(DELETE)) {
+			
+		}
+		else {
+			if(i<1) {
+				risultato = Integer.parseInt(e.getActionCommand());
+				Tinserito = Tinserito + e.getActionCommand();
+				display.schermo.setText(Tinserito);
+				i = i+1;
+			}
+			else {
+				if(operazione == "+") {
+					double x = Double.parseDouble(e.getActionCommand());
+					Tinserito = Tinserito + e.getActionCommand();
+					display.schermo.setText(Tinserito);
+					//risultato = risultato + x;
+					i = 0;
+				}
+			}
+		}
+		
+	}
+}
+
+
+
+
+
+
+
+
+
+
+

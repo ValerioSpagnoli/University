@@ -1,0 +1,28 @@
+package frame;
+
+import java.awt.event.*;
+import javax.swing.*;
+
+public class Listener implements ActionListener{
+	public final static String SOMMA = "Somma";
+	public final static String DIFFERENZA = "Differenza";
+	public final static String MOLTIPLICAZIONE = "Moltiplicazione";
+	public final static String DIVISIONE = "Divisione";
+	public final static String UGUALE = "Uguale";
+	public final static String DELETE = "Delete";
+	public final static String PUNTO = "Punto";
+		
+	private Frame display;
+	
+	private String Tinserito = "";
+	
+	public Listener(Frame displayA) {
+		this.display = displayA;
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		Integer.parseInt(e.getActionCommand());
+		Tinserito = Tinserito + e.getActionCommand();
+		display.schermo.setText(Tinserito);
+	}
+}

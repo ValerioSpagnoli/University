@@ -1,0 +1,62 @@
+/*
+ * L'algoritmo di Bakery è la soluzione definitiva. Garantisce no deadlock, no livelock, 
+ * no starvation e mutua esclusione.
+ * L'algorirmo di Bakery si divide in tre parti:
+ * - DOORWAY: i processi scelgono il proprio numero
+ * - BAKERY:  i processi attendono che tutti quelli interessati ad entrare in CS scelgano il 
+ * 			  proprio numero. Successivamente viene scelto in ordine lessicografico (prima sul 
+ * 			  numero e poi sul PID) chi entra per primo in CS.
+ * - CS,DOPO: i processi vanno in CS e successivamente impostano il loro numero a 0, così se 
+ * 			  vogliono rientrare in CS devono rimettersi in coda     
+ */
+
+//  Vengono usate le seguenti variabili GLOBALI
+
+/// boolean choosing[N] = {false, ..., false}
+//  Per indicare se un processo sta scegliendo il suo numero
+/// int number[N]; 
+//  Per indicare quale numero è stato scelto da un certo processo
+//  Viene usata la seguente variabile LOCALE
+/// int i;
+//  Identifica il processo su cui viene applicato l'algoritmo
+
+
+// INIZIO DOORWAY
+choosing[i] = true;											  //-> Il processo i comunica che sta 
+																// scegliendo il numero.
+
+number[i] = 1 + max{number[j] | (1 <= j <= N) except i};	  //-> il processo i sceglie il numero 
+																// come 1+il numero massimo scelto 
+																// fino ad ora dagli altri processi.
+																// Questo non impedisce che due 
+																// processi abbiamo lo stesso numero
+																
+choosing[i] = false											  //-> Il processo i comunica che ha 
+																// finito di scegliere il numero.
+//FINE DOORWAY
+
+//INIZIO BAKERY													
+for(int j = 1; j <= N && j != i; j++){						  //-> Per ogni processo eccetto i
+	while(choosing[j] == true);								  //-> Se qualcuno sta scegliendo il 
+																// numero il processo i aspetta.
+																// In questo modo viene la scelta su 
+																// chi entra in CS viene fatta 
+																// quando tutti ti processi hanno
+																// finito di scegliere in numero.
+																
+	while(number[j] != 0 && (number[j],j) < (number[i], i));  //-> Finchè il numero del processo j è 
+																// diverso da 0 (quindi j è 
+																// interessato ad entrare in CS) e 
+																// il numero di j è minore del 
+																// numero di i, oppure a partità di
+																// numero il PID di j è minore del 
+																// PID di i, il processo i aspetta.
+}
+//FINE BAKERY
+
+/* CRITICAL SECTION */										  //-> Il processo i entra in CS.
+
+number[i] = 0;												  //-> Quando il processo i esce dalla 
+																// CS mette il suo numero a 0.
+
+

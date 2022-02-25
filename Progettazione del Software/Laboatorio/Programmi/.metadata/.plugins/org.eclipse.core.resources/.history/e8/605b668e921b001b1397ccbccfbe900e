@@ -1,0 +1,6 @@
+package figureGeometriche;
+
+abstract public class FiguraGeometrica {
+	
+
+}

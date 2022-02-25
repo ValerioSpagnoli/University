@@ -1,0 +1,21 @@
+package display;
+import java.awt.*;
+import javax.swing.*;
+
+public class Listener implements ActionListener{
+	
+	public static final String START = "Start";
+	public static final String STOP = "Stop";
+	public static final String CONNECT = "Connect";
+	public static final String DISCONNECT = "Disconnect";
+	
+	private JTextField IPaddressField;
+	private JTextField portaField;
+	private JTextField matricolaField;
+	
+	private boolean connect = false;
+	private boolean transmitting = false;
+	
+	private Display display;
+	
+}

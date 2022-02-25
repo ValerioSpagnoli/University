@@ -1,0 +1,50 @@
+package esercizio_2;
+
+public class Esercizio_2 {
+	
+	public static int [][] generaMatrice(int n, int m) {
+		int [][] mat = new int [n][m];
+		for(int i = 0; i < mat.length; i++) {
+			for(int j = 0; j < mat[0].length; j++) {
+				mat[i][j] = 100*Math.random();
+			}
+		}
+		return mat;
+	}
+	
+	private static int sommaCella (int[][] mat, int i, int j) {
+		int r = mat.length;
+		int c = mat[0].length;
+		int somma = 0;
+		
+		if(i == 0 && j == 0) {
+			somma = mat[][]
+			
+		}
+		else if(i == 0 && j == c) {
+			
+		}
+		else if(i == r && j == 0) {
+			
+		}
+		else if(i == r && j == c) {
+			
+		}
+		else {
+			
+		}
+		
+	}
+	
+	public static double[][] differenzaVicini(int[][] mat){
+		int r = mat.length;
+		int c = mat[0].length;
+		for(int i = 0; i < r; i++) {
+			for(int j = 0; j < c; j++) {
+				int somma = 0;
+				
+
+			}
+		}
+	}
+}

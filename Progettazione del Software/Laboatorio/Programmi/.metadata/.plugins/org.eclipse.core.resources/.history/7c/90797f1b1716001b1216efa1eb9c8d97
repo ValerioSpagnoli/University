@@ -1,0 +1,91 @@
+package classe;
+
+import insegnante.Insegnante;
+import scuola.Scuola;
+
+public class Classe {
+	
+	//costanti
+	private static final int numeroInsegnanti = 3;
+	
+	//campi dati 
+	
+	private final Scuola scuolaAppartenenza;
+	private final String nome;
+	private Insegnante[] insegnanti;
+	private int numeroAlunni;
+	
+	//costruttore
+	
+	public Classe(String nome, Scuola scuolaAppartenenza, Insegnante[] insegnanti, int numeroAlunni) {
+		this.nome = nome;
+		this.scuolaAppartenenza = scuolaAppartenenza;
+		this.insegnanti = new Insegnante[numeroInsegnanti];
+		this.numeroAlunni = numeroAlunni;
+	}
+	
+	//metodi
+	
+	public String getNome() {
+		return nome;
+	}
+	
+	public Scuola getScuolaAppartenenza() {
+		return scuolaAppartenenza;
+	}
+	
+	public Insegnante[] getInsegnanti(){
+		return insegnanti;
+	}
+	
+	public int getNumeroAlunni() {
+		return numeroAlunni;
+	}
+	
+	
+	//sostituisci insegnante
+	public void sostituisciInsegnante(Insegnante insOut, Insegnante insIn) {
+		boolean trovato = false;
+		if(insegnanteInClasse(insOut)) {
+			
+			for(int i = 0; i < numeroInsegnanti && !trovato; i++) {
+				if(insegnanti[i].equals(insOut)) {
+					insegnanti[i] = null;
+					insegnanti[i] = insIn;
+					trovato = true;
+				}
+			}
+			
+		}
+		else {
+			System.out.println("Errore: l'insegnante da sostituire non fa parte di questa classe.");
+		}
+	}
+	
+	
+	//verifica se insegnante ins appartiene a quella classe
+	public boolean insegnanteInClasse(Insegnante ins) {
+		boolean trovato = false;
+		for(int i = 0; i < numeroInsegnanti && !trovato; i++) {
+			if(insegnanti[i].equals(ins)) trovato = true;
+		}
+		return trovato;
+	}
+	
+	
+	//stampa i dati della classe
+	public void stampaClasse() {
+		System.out.print("Nome: " + nome + ", " + "scuola: " + scuolaAppartenenza.getNome() + ", " + "insegnanti: ");
+		/*for(int i = 0; i < numeroInsegnanti; i++) {
+			System.out.print(insegnanti[i].getNome() + insegnanti[i].getCognome() + ", ");
+		}*/
+		System.out.println("numero alunni: " + numeroAlunni + ".");
+	}
+}
+
+
+
+
+
+
+

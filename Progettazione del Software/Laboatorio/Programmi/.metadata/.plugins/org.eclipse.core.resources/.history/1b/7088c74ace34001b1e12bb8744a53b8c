@@ -1,0 +1,13 @@
+package client;
+
+import javax.swing.*;
+import java.util.*;
+import java.util.logging.*;
+
+public class FrameClient extends JFrame{
+	
+	JFrame frame = new JFrame();
+	
+	final 
+	
+}

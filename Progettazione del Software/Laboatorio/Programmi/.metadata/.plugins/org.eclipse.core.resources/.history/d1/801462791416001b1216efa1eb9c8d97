@@ -1,0 +1,10 @@
+package main;
+import scuola.Scuola;
+import insegnante.Insegnante;
+import classe.Classe;
+
+public class Main {
+	public static void main(String[] args) {
+		
+	}
+}

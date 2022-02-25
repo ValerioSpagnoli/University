@@ -1,0 +1,72 @@
+package app;
+
+import client.Client;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.util.Scanner;
+
+import javax.swing.JTextField;
+
+public class ClientListener implements ActionListener{
+
+	public static final String START = "start";
+	public static final String STOP = "stop";
+	public static final String CONNECT = "connect";
+	public static final String DISCONNECT = "disconnect";
+	public static final String CLEAR = "clear";
+	
+	private Frame frame;
+	
+	private boolean connected = false;
+	private boolean downloading = false;
+	
+	private Client downloader;
+	
+	private PrintWriter netPw;
+	private Scanner scan;
+	private Socket socket;
+	
+	
+	public ClientListener(Frame f) {
+		frame = f;
+		frame.setButton(connected, downloading);
+	}
+
+	
+	public void actionPerformed(ActionEvent e) {
+		
+		
+		if(e.getActionCommand().equals(CONNECT)) {
+			connected = true;
+			downloading = false;
+			frame.setButton(connected, downloading);
+			
+		}
+		else if(e.getActionCommand().equals(START)) {
+			connected = true;
+			downloading = true;
+			frame.setButton(connected, downloading);
+		}
+		else if(e.getActionCommand().equals(STOP)) {
+			connected = true;
+			downloading = false;
+			frame.setButton(connected, downloading);
+		}
+		else if(e.getActionCommand().equals(DISCONNECT)) {
+			connected = false;
+			downloading = false;
+			frame.setButton(connected, downloading);
+		}
+		else if(e.getActionCommand().equals(CLEAR)) {
+			connected = true;
+			downloading = false;
+			frame.setButton(connected, downloading);
+		}
+		
+		
+	}
+
+}

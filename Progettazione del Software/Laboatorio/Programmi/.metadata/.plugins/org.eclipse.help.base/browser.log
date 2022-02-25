@@ -1,0 +1,5 @@
+
+Jan 15, 2021 15:33:19.123 NEW SESSION
+Jan 15, 2021 15:33:19.123 which: no mozilla in (/home/studente/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/lib/jvm/default/bin:/usr/lib/mailman/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl)
+Jan 15, 2021 15:33:19.131 which: no netscape in (/home/studente/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/lib/jvm/default/bin:/usr/lib/mailman/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl)
+Jan 15, 2021 15:33:19.136 /usr/bin/firefox

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workingSetManager>
+<workingSet editPageId="org.eclipse.jdt.internal.ui.DynamicSourcesWorkingSet" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1602266619011_0" label="Java Main Sources" name="Java Main Sources"/>
+<workingSet editPageId="org.eclipse.jdt.internal.ui.DynamicSourcesWorkingSet" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1602266619030_1" label="Java Test Sources" name="Java Test Sources"/>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1602670036022_4" label="Persona" name="Persona"/>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1602670188843_5" label="Es" name="Es"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1602266621077_2" label="Window Working Set" name="Aggregate for window 1602266621077"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1602279813694_3" label="Window Working Set" name="Aggregate for window 1602279813694"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1602780812656_7" label="Multiple Working Sets" name="Aggregate:Es:Java Main Sources:Java Test Sources:Persona:">
+<workingSet IMemento.internal.id="Es"/>
+<workingSet IMemento.internal.id="Java Main Sources"/>
+<workingSet IMemento.internal.id="Java Test Sources"/>
+<workingSet IMemento.internal.id="Persona"/>
+</workingSet>
+</workingSetManager>

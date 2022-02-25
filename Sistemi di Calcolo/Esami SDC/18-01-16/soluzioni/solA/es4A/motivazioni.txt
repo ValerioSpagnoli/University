@@ -1,0 +1,30 @@
+Inserisci qui sotto le motivazioni alle risposte date.
+
+-----------------------------
+Domanda 1
+
+Escludiamo la A poiché il thrashing è principalmente un fenomeno che impatta le prestazioni e non la correttezza.
+
+Escludiamo la B perché la velocità dei dischi non rientra nella definizione del fenomeno del thrashing.
+
+Escludiamo la D perché lo swapping non coinvolge le memorie cache.
+
+La risposta corretta è la C, poiché avendo sempre sufficienti frame fisici, il sistema non può entrare in thrashing.
+
+-----------------------------
+Domanda 2
+
+Uno spazio di memoria a 48 bit ha 2^48 byte che divisi in pagine di 8 KB = 2^13 byte richiede 2^(48-13) = 2^35 celle della tabella delle pagine.
+
+-----------------------------
+Domanda 3
+
+Un processo per entrare nello stato ready deve eseguire un'azione come la richiesta di accesso a un dispositivo di I/O, deve pertanto essere running. Pertanto la risposta D è falsa.
+
+-----------------------------
+Domanda 4
+
+La maschera di permessi è 744 poiché:
+
+7 = 111 = rwx per user
+4 = 100 = r-- per group e others

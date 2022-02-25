@@ -1,0 +1,34 @@
+package sistemaBancario;
+
+import java.util.Arrays;
+
+public class Banca {
+	
+	private String nome;
+	private ContoCorrente[] conti;
+	private int index;
+	private static final int MAX = 10;
+
+	public Banca(String nome) {
+		this.nome = nome;
+		conti = new ContoCorrente[MAX];
+		index = 10;
+	}
+	
+	public void aggiugniConto(ContoCorrente c) throws Exception {
+		conti[index] = c;
+		index = index + 1;
+		ContoCorrente[] buffer = Arrays.copyOf(conti, index);
+		Arrays.sort(buffer);
+		for(int i = 0; i<buffer.length; i++) {
+			conti[i] = buffer[i];
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+}

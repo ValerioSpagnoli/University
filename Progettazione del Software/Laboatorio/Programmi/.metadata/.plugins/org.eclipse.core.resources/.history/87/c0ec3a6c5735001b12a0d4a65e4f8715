@@ -1,0 +1,46 @@
+package client;
+
+import java.net.*;
+import java.io.*;
+import java.util.*;
+import java.util.logging.*;
+
+public class Client {
+	
+	private static Logger logger = Logger.getLogger("client.Client");
+	private Socket socket = null;
+	private Scanner scan = null;
+	private PrintWriter streamOut = null;
+	
+	public Client(String IPaddress, int port) {
+		logger.log(Level.INFO, "Stabilendo una connessione. Attendere ...");
+		try {
+			socket = new Socket(IPaddress, port);
+			logger.log(Level.INFO, "Connessione: " + socket);
+			start();
+		}
+		catch(UnknownHostException uhe) {
+			logger.log(Level.SEVERE, "Host unknown: " + uhe.getMessage(), uhe.getStackTrace());
+		}
+		catch(IOException ioe) {
+			logger.log(Level.SEVERE, "Unexpected exception: " + ioe.getMessage(), ioe.getStackTrace());
+		}
+	}
+	
+	public void start() throws IOException {
+		scan = new Scanner(System.in);
+		streamOut = new PrintWriter(socket.getOutputStream());
+	}
+	public void stop() {
+		try {
+			if(scan!=null) scan.close();
+			if(streamOut!=null) streamOut.close();
+			if(socket!=null) socket.close();
+		} catch(IOException ioe) {
+			System.out.println("Errore in chiusura...");
+		}
+	}
+	
+	
+	
+}

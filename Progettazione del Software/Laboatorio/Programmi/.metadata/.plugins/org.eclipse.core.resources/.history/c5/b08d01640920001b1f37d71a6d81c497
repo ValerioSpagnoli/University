@@ -1,0 +1,10 @@
+package leftPanel;
+
+import javax.swing.*;
+
+public class LeftPanel {
+	private static final JLabel passLabel = new JLabel();
+	private static final JLabel bottLabel = new JLabel();
+	
+
+}

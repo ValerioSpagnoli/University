@@ -1,0 +1,23 @@
+package client;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class Frame extends JFrame{
+	
+	JFrame frame = new Frame();
+	
+	//north 
+	JPanel northPanel = new JPanel();
+	JLabel ipAddressLabel = new JLabel("Server Address");
+	JTextField ipAddressText = new JTextField("127.0.0.1");
+	JLabel portLabel = new JLabel("Port");
+	JTextField portText = new JTextField("4400");
+	
+	//center
+	JPanel centerPanel = new JPanel();
+	
+	//south
+	JPanel southPanel = new JPanel();
+	
+}

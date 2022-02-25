@@ -1,0 +1,13 @@
+package server_client_v1;
+
+public class AppClient {
+	public static void main(String[] args) {
+		Client client = null;
+		if(args.length != 2) {
+			System.out.println("Usage: java Client host port");
+		}
+		else {
+			client = new Client(args[0], Integer.parseInt(args[1]));
+		}
+	}
+}

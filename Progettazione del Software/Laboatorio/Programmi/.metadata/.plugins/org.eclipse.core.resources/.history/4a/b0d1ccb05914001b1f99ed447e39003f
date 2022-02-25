@@ -1,0 +1,21 @@
+package esercizio_1;
+
+public class Esercizio_1 {
+	
+	public double [][] generaMatrice(int n, int m) {
+		double [][] matrice = new double [n][m];
+		return matrice;
+	}
+	
+	public void stampaMatrice(double mat[][]){
+		for(int i = 0; i < mat.length; i++) {
+			for(int j = 0; j < mat[i].length; j++) {
+				System.out.print(mat[i][j] + "%4d");
+			}
+			System.out.println();
+		}
+	}
+	
+	
+
+}

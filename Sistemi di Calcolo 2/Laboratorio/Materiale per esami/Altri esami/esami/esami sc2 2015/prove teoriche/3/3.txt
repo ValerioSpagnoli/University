@@ -1,0 +1,5 @@
+Il passaggio di parametri in una RPC può avvenire in due modi: per valore o per riferimento.
+Il passaggio di parametri per valore è facile.
+Il passaggio di parametri per riferimento invece è molto difficile perché se se vuole passare un indirizzo di memoria locale alla RPC, bisogna necessariamente inviare una copia della memoria locale al server, ma questo genera molto overhead sia sulle singole entità, che sulla rete.
+Invece se si vuole puntare un indirizzo di memoria del server, bisogna conoscere come questa è organizzata, ma ciò non è possibile.
+Inoltre, sia il passaggio di parametri per valore, che per riferimento, soffrono del problema che deriva se si usano linguaggi di programmazione differenti tra client e server.

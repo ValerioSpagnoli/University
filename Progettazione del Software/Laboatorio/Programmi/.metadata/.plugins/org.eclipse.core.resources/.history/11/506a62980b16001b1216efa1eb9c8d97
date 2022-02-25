@@ -1,0 +1,18 @@
+package scuola;
+
+public class Scuola {
+	
+	//campi dati
+	
+	private final String nome;
+	private String indirizzo, provveditorato;
+	
+	//costruttore
+	
+	public Scuola(String nome, String indirizzo, String provveditorato) {
+		this.nome = nome;
+		this.indirizzo = indirizzo;
+		this.provveditorato = provveditorato;
+	}
+
+}

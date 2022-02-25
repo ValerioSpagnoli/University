@@ -1,0 +1,3 @@
+I monitor sono un costrutto dei linguaggi di programmazione simili ai semafori. Offrono sistemi di sincronizzazione attraverso l'uso di variabili di condizione che sono contenute all'interno del monitor e sono gestibili attraverso le primitive cwait e csignal.
+Solo un processo per volta può avere accesso al monitor e l'accesso è possibile solo attraverso le procedure stesse del monitor. Anche le variabili locali del monitor sono accessibili solo attraverso le procedure del monitor stesso.
+E' simile ad un semaforo ad oggetti.

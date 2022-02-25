@@ -1,0 +1,7 @@
+package lista;
+
+import java.util.Iterator;
+
+public class MioSetIterator<E> implements Iterator<E> {
+
+}

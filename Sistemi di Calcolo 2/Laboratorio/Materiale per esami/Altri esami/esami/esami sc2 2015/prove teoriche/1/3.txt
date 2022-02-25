@@ -1,0 +1,7 @@
+La triade della sicurezza è:
+
+- RISERVATEZZA: garantire che non ci sia perdita di riservatezza, ovvero che non ci sia divulgazione non autorizzata di informazioni.
+
+- INTEGRITA': garantire che non ci sia perdita di integrità, ovvero che non ci sia modifica o distruzione non autorizzata di informazioni.
+
+- DISPONIBILITA': garantire che non ci sia perdita di disponibilità, ovvero che non ci sia interruzione del servizio o di accesso alle informazioni di un sistema informatico-

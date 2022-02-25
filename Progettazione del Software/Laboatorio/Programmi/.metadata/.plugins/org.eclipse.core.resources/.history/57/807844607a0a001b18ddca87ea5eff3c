@@ -1,0 +1,14 @@
+import java.lang.*;
+public class Fattoriale {
+	 public static int fattoriale(int n) {
+		    if (n <= 1) return 1;
+		    else return n*fattoriale(n-1);
+		  }
+
+		  public static void main(String[] args) {
+		    int m = 3;
+		    System.out.println("Il fattoriale di " +
+		                       m + " e' " +
+		                       fattoriale(m) + ".");
+		  }
+}

@@ -1,0 +1,19 @@
+package panel;
+
+import javax.swing.*;
+
+public class Panel {
+	private static final String titolo = "Pannello Digitale";
+
+	//pannello sinistra
+	private static final JPasswordField password = new JPasswordField();
+	private static final JPanel centroPanel = new JPanel();
+	
+	//Pannello destra
+	
+	
+		
+	
+	
+
+}

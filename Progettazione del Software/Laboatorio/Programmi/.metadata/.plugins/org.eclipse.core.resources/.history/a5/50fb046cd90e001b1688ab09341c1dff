@@ -1,0 +1,14 @@
+import java.util.*;
+public class Esercizio_11 {
+	public static void main (String[] args) {
+		String s1 = 
+		String s2 = "Pericolo";
+		boolean b = s1.contains(s2);
+		if(b == true) {
+			System.out.println("True");
+		}
+		else {
+			System.out.println("False");
+		}	
+	}
+}

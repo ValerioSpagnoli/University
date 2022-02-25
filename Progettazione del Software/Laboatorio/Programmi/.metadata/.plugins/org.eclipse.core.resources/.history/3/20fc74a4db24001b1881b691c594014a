@@ -1,0 +1,6 @@
+package lista;
+
+public class MiaLista<E> implements List<E> {
+	
+
+}

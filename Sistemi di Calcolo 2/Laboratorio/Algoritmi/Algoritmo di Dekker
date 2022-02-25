@@ -1,0 +1,32 @@
+/*
+ * L'algoritmo di Dekker usa dei flag affinchè i processi comunichino tra loro dicendo se sono
+ * o meno interessati ad entrare nella critical section.
+ * Si applica solo a due processi
+*/
+
+// IO: P1 
+// ALTRO: P2
+// Si usa un array booleano flag[] = {0, 0} con due celle, una per P1 e ina per P2
+// Si una una variabile turn che indica se il turno è di P1 o di P2
+
+
+flag[me] = true;				// P1 è interessato ad entrare in CS
+			
+while(flag[other]){				// Se P2 è interessato ad entrare in CS
+	
+	if(turn == other){			// Se è il turno di P2
+		
+		flag[me] = false;		// P1 non vuole più entrare in CS
+		while(turn == other);   // Finchè il turno rimane di P2
+		flag[me] = true;        // Quando il turno non è più di P2, P1 vuole entrare di nuovo in CS 
+		
+	}							// P1 esce dall'if
+	
+}								// P1 esce dal while perchè il turno non è di P2
+/* CRITICAL SECTION */			// P1 entra in CS
+								// Quando P1 esce dalla CS
+turn = other;					// Imposta il turno a P2
+flag[me] = false;				// P1 non è più interessato ad entrare in CS
+
+
+

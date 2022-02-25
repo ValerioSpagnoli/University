@@ -1,0 +1,35 @@
+package server;
+
+import java.net.*;
+import java.io.*;
+import java.util.*;
+import java.util.logging.*;
+
+public class ClientHandler implements Runnable{
+	
+	private static Logger logger = Logger.getLogger("server.ClientHandler");
+	Socket socket = null;
+	
+	public ClientHandler(Socket s) {
+		socket  = s;
+	}
+	
+	public void run() {
+		
+		try {
+			Scanner scan = new Scanner(socket.getInputStream());
+			boolean done = false;
+			while(done) {
+				String line = scan.nextLine();
+				System.out.println(line);
+				done = line.equals("bye");
+			}
+			if(socket != null) socket.close();
+			if(scan != null) scan.close();
+		} catch (IOException ioe) {
+			logger.log(Level.SEVERE, ioe.getMessage(), ioe.getStackTrace());
+		}
+		
+	}
+	
+}

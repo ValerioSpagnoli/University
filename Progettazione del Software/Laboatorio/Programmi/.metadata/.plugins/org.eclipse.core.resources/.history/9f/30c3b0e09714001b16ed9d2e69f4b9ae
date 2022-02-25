@@ -1,0 +1,12 @@
+package esercizio_3;
+
+import java.util.Scanner;
+
+public class Esercizio_3 {
+	
+	int r;
+	int c;
+	Scanner scan = new Scanner(System.in);
+	r = Integer.parseInt(scan.nextLine());
+
+}

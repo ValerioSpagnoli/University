@@ -1,0 +1,81 @@
+package client;
+
+import java.awt.*;
+
+import javax.swing.*;
+
+public class Frame extends JFrame{
+	
+	JFrame frame = new JFrame();
+	BorderLayout frameLayout = new BorderLayout();
+	
+	//north
+	JPanel northPanel = new JPanel();
+	JLabel ipAddressLabel = new JLabel("Server Address");
+	JLabel portLabel = new JLabel("Port");
+	JTextField ipAddressText = new JTextField("127.0.0.1");
+	JTextField portText = new JTextField("4400");
+	JButton connectBtn = new JButton("Connect");
+	JButton disconnectBtn = new JButton("Disonnect");
+	
+	//center
+	JPanel centerPanel = new JPanel();
+	GridLayout centerLayout = new GridLayout(3,5);
+	TicketCell[][] cartellaGrid = new TicketCell[3][5];
+	
+	//south
+	JPanel southPanel = new JPanel();
+	JButton startBtn = new JButton("Start");
+	JButton stopBtn = new JButton("Stop");
+	
+	//east
+	JPanel eastPanel = new JPanel();
+	JScrollPane elencoEstrattiText = new JScrollPane(new JTextArea(20,30));
+	
+	public Frame() {
+		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		frame.setLayout(frameLayout);
+		frame.setTitle("Valerio Spagnoli 1887715");
+		Container contentPane = frame.getContentPane();
+		
+		//north
+		northPanel.add(ipAddressLabel);
+		northPanel.add(ipAddressText);
+		northPanel.add(portLabel);
+		northPanel.add(portText);
+		northPanel.add(connectBtn);
+		northPanel.add(disconnectBtn);
+		
+		//center
+		centerPanel.setLayout(centerLayout);
+		for(int i = 0; i<3; i++) {
+			for(int j = 0; j<5; j++) {
+				TicketCell casella = new TicketCell();
+				centerPanel.add(casella);
+				cartellaGrid[i][j] = casella;
+			}
+		}
+		
+		//south
+		southPanel.add(startBtn);
+		southPanel.add(stopBtn);
+		
+		//east
+		eastPanel.add(elencoEstrattiText);
+		
+		//contentPane
+		contentPane.add(northPanel, BorderLayout.NORTH);
+		contentPane.add(centerPanel, BorderLayout.CENTER);
+		contentPane.add(southPanel, BorderLayout.SOUTH);
+		contentPane.add(eastPanel, BorderLayout.EAST);
+		
+		//settings
+		frame.setVisible(true);
+		frame.pack();
+		frame.setLocationRelativeTo(null);
+		
+		
+	}
+	
+	
+}

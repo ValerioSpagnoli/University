@@ -1,0 +1,6 @@
+La funzione data può generare buffer overflow perché viene copiata una stringa in un buffer di 126 caratteri con la strcpy. Questa funzione non effettua alcun controllo sulla lunghezza della stringa da copiare, quindi se viene passata una stringa di più di 126 caratteri:
+- i primi 126 vengono copiati nel buffer;
+- i successivi andranno a sovrascrivere le celle di memoria adiacenti al buffer nella stack.
+In particolare, dato che l'unica variabile locale è proprio il buffer, le celle adiacenti identificano il codice di ritorno della funzione, ovvero la prossima istruzione da eseguire nel programma.
+Di conseguenza un attaccante potrebbe sfruttare questa vulnerabilità per sovrascrivere il codice di ritorno della funzione in modo da andare a forzare l'esecuzione di una funzione malevola inserita da lui nella memoria, sostituendo il codice di ritorno con l'indirizzo della funzione malevola in memoria.
+Questo attacco si potrebbe evitare usando la funzione strncpy(char* dest, char* src, int n), che copia solo i primi n byte della stringa src nel buffer.

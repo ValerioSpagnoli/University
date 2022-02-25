@@ -1,0 +1,7 @@
+package lista;
+
+public class MiaLista<E> implements List<E> {
+	private NodoLista<E> inizio;
+	private int size;
+
+}

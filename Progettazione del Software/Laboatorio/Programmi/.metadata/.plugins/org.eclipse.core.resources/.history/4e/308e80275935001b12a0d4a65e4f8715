@@ -1,0 +1,82 @@
+package clientApp;
+import client.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;
+import java.util.logging.*;
+
+
+public class Listener implements ActionListener{
+	
+	public static final String START = "Start";
+	public static final String STOP = "Stop";
+	public static final String CONNECT = "Connect";
+	public static final String DISCONNECT = "Disconnect";
+	
+	private String IPaddress;
+	private int port;
+	private String matricola;
+	
+	private Client client;
+	
+	private boolean connect = false;
+	private boolean transmitting = false;
+	
+	private Display display;
+	private boolean connected;
+	
+	private static Logger logger = Logger.getLogger("clientApp.Listener");
+	
+	public Listener(Display display) {
+		this.display = display;
+		IPaddress = display.IPaddress.getText();
+		port = Integer.parseInt(display.porta.getText());
+		matricola = display.matricola.getText();	
+	}
+	
+	private void setupConnection() {
+		logger.log(Level.INFO, "connect " + IPaddress + ":" + port);
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		String cmd = e.getActionCommand();
+		if(cmd.equals(Listener.CONNECT)) {
+			setupConnection();
+			connected = true;
+			JOptionPane.showMessageDialog(null, "Connessione stabilita");
+			client = new Client(IPaddress, port);
+		}
+		else if(cmd.equals(Listener.START)){
+			transmitting = true;
+			logger.log(Level.INFO, "Start");
+			JOptionPane.showMessageDialog(null, "Interazione avviata");
+			
+		}
+		else if(cmd.equals(Listener.STOP)){
+			transmitting = false;
+			//logger.log(Level.INFO, "Stop");
+			System.out.println("Stop");
+			JOptionPane.showMessageDialog(null, "Interazione interrotta");
+		}
+		else if(cmd.equals(Listener.DISCONNECT)){
+			connected = false;
+			//logger.log(Level.INFO, "Disconnected");
+			System.out.println("Disconnect");
+			JOptionPane.showMessageDialog(null, "Connessione interrotta");
+		}
+		display.setButtons(connected, transmitting);
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+
